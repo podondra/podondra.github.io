@@ -1,5 +1,2 @@
 language: ruby
-before_install:
-    - sudo apt-get -q update
-    - sudo apt-get install ruby-full -y
 script: "bundle exec jekyll build"
