@@ -1,6 +1,6 @@
 {
   "name": "podondra site",
   "tagline": "my personal site",
-  "body": "### [linear generators](/linear-generator)\r\nSeminar paper. Code optimization. Vectorization. Cache. Parallel processing.\r\n",
+  "body": "### welcome\r\nHi. I'm just a student of computer science. I live in [Houdkovice](https://goo.gl/maps/osPkehiYgjR2), Czech Republic.\r\n\r\n### projects\r\n\r\n    1. [linear generators](/linear-generator)\r\n",
   "note": "Don't delete this file! It's used internally to help with page regeneration."
 }
