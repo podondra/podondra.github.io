@@ -1,6 +1,0 @@
-{
-  "name": "podondra site",
-  "tagline": "my personal site",
-  "body": "### Welcome\r\n\r\nHi. I'm just a student of computer science. I live in [Houdkovice](https://goo.gl/maps/osPkehiYgjR2), Czech Republic.\r\n\r\n### [Bachelor Thesis Intro](bp-intro)\r\n\r\nPresentation introduction to my bachelor thesis. Spectra analysis of Be stars using Deep learning.\r\n\r\n### [Linear Generators](/linear-generator)\r\n\r\nSeminar paper about code optimization. Code is vectorized. Several loop optimization techniques are used. OpenMP is used for parallel execution. Some cache usage analysis. ",
-  "note": "Don't delete this file! It's used internally to help with page regeneration."
-}
