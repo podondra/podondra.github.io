@@ -1,23 +1,16 @@
-<header>
+<!-- columns should be the immediate child of a .row -->
+<div class="row">
+    <div class="twelve columns">
+        <h1>podondra</h1>
+    </div>
+</div>
 
-    <h1>
-        <a href="{{ site.baseurl }}/">{{ site.title }}</a>
-    </h1>
-
-    <p>{{ site.description }}</p>
-
-    <ul>
-        {% if site.github_username %}
-        <li>
-            <a href="https://github.com/{{ site.github_username }}">github</a>
-        </li>
-        {% endif %}
-
-        {% if site.email %}
-        <li>
-            <a href="mailto:{{ site.email }}">{{ site.email }}</a>
-        </li>
-        {% endif %}
-    </ul>
-
-</header>
+<div class="row">
+    <div class="twelve columns">
+        <a class="button" href="https://github.com/{{ site.github_username }}">
+            <img style="vertical-align: text-bottom" src="img/octoface.svg" alt="octoface">
+            github
+        </a>
+        <a class="button" href="mailto:{{ site.email }}">{{ site.email }}</a>
+    </div>
+</div>
