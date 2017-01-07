@@ -1,9 +1,0 @@
-# site setting
-email: ondrej.podsztavek@gmail.com
-description: my personal site
-baseurl: ""
-url: "https://podondra.cz"
-github_username: podondra
-
-# build setting
-exclude: [CNAME, LICENSE, README.md]
