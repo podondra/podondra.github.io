@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+    {% for article in articles_page.object_list %}
+    <article class="row">
+        <header class="six columns">
+            <h5><a href="{{ SITEURL }}/{{ article.url }}"
+                    rel="bookmark"
+                    title="Permalink to {{ article.title|striptags }}">
+                    {{ article.title }}
+            </a></h5>
+        </header>
+        <time class="two columns" datetime="{{ article.date.isoformat() }}">
+            {{ article.date|strftime('%d %B %Y') }}
+        </time>
+        <div class="four columns">
+            {{ article.summary }}
+        </div>
+    </article>
+    {% endfor %}
+{% endblock content %}

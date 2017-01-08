@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="{{ DEFAULT_LANG }}">
+<head>
+    {% block head %}
+    <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
+    <meta charset="utf-8">
+    <meta name="author" content="{{ AUTHOR }}">
+    <!-- mobile specific -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <!-- font awesome icons -->
+    <script src="https://use.fontawesome.com/2c3fc9ca95.js"></script>
+    <!-- favicon -->
+    <link rel="icon" type="image/png" href="keyboard.png">
+    {% endblock head %}
+</head>
+
+<body>
+    <header class="container">
+        <h1>{{ SITENAME }}</h1>
+    </header>
+    <nav class="container">
+        <a class="button" href="{{ SITEURL }}/index.html">
+            <i class="fa fa-folder" aria-hidden="true"></i>
+            index
+        </a>
+        <a class="button" href="{{ SITEURL }}/categories.html">
+            <i class="fa fa-binoculars" aria-hidden="true"></i>
+            categories
+        </a>
+        <a class="button" href="{{ SITEURL }}/author/ondrej-podsztavek.html">
+            <i class="fa fa-shower" aria-hidden="true"></i>
+            about me
+        </a>
+        <a class="button" href="https://github.com/podondra">
+            <i class="fa fa-github-alt" aria-hidden="true"></i>
+            github
+        </a>
+    </nav>
+    <section class="container">
+        {% block content %}
+        {% endblock %}
+    </section>
+</body>
+</html>
