@@ -16,4 +16,4 @@ DELETE_OUTPUT_DIRECTORY = True
 
 # Following items are often useful when publishing
 DISQUS_SITENAME = 'podondra'
-# TODO GOOGLE_ANALYTICS = ''
+GOOGLE_ANALYTICS = 'UA-89944397-1'
