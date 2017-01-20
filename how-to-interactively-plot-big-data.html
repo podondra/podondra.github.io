@@ -23,9 +23,10 @@ ga('send', 'pageview');
     </script>
 
 
-    <meta name="tags" content="matplotlib" />
     <meta name="tags" content="jupyter" />
-    <meta name="tags" content="python" />
+    <meta name="tags" content="matplotlib" />
+    <meta name="tags" content="data science" />
+    <meta name="tags" content="big data" />
 </head>
 
 <body>
@@ -52,22 +53,26 @@ ga('send', 'pageview');
     </nav>
     <section class="container">
 <header>
-    <h2>
-        <a href="https://podondra.cz/how-to-interactively-plot-big-data.html" rel="bookmark">
-            How to Interactively Plot Big Data
-        </a>
-    </h2>
+    <h2>How to Interactively Plot Big Data</h2>
 </header>
 <footer>
-    <time datetime="2017-01-07T12:22:00+01:00">
-        Sat 07 January 2017
+    <time datetime="2017-01-20T17:52:53.928977+01:00">
+        Fri 20 January 2017
     </time>
 </footer>
 <div>
-    <p>I am going to show you how to ...</p>
+    <p>In this article I am about to show you how to plot interactively Big
+Data using Jupyter notebook. This can help someone maybe. End of this summary</p>
+<pre><code><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre><img alt="normal distribution" src="https://podondra.cz/images/output_2_0.png" />
 
 </div>
-<div>
+
 <div id="disqus_thread"></div>
 <script>
 var disqus_config = function () {
@@ -82,7 +87,6 @@ var disqus_config = function () {
     (d.head || d.body).appendChild(s);
 })();
 </script>
-</div>
     </section>
 </body>
 </html>
