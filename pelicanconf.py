@@ -27,3 +27,5 @@ EXTRA_PATH_METADATA = {
         'extra/keyboard.png': {'path': 'keyboard.png'},
         'extra/CNAME': {'path': 'CNAME'},
         }
+DEFAULT_DATE = 'fs'
+SUMMARY_MAX_LENGTH = 15

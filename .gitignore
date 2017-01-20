@@ -4,3 +4,4 @@ _site/
 output/
 __pycache__/
 venv/
+.ipynb_checkpoints/
