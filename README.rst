@@ -10,6 +10,5 @@ skeleton_
 TODO
 ----
 
-- fork Skeleton because it is inactive
-- fix code blocks overflow
 - add feeds, rss
+- get on planetpython.org
