@@ -68,7 +68,7 @@ When the view is ready 'download plot' button will download the image or
 
 Here is a short example with 80 MB.
 
-.. code-block:: ipython3
+.. code-block:: python3
 
     import ipympl
     import matplotlib.pyplot as plt
@@ -98,7 +98,7 @@ Here is a WebSocket frame dumped by Chromium Developer Tools (with some
 parts strip off). The important part is the base64 encoded image (which
 is also shorted).
 
-.. code-block:: ipython3
+.. code-block:: python3
 
     {'buffers': [],
      'channel': 'iopub',
