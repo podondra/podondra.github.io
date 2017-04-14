@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://podondra.cz/theme/css/skeleton.css">
+    <link rel="stylesheet" href="https://podondra.cz/theme/css/pygment.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <!-- font awesome icons -->
     <script src="https://use.fontawesome.com/2c3fc9ca95.js"></script>
@@ -80,15 +81,18 @@ matplotlib v2.0.0.</p>
 <div class="section" id="installation">
 <h2>Installation</h2>
 <p>I recommend to create an virtual environment.</p>
-<pre><code>$ virtualenv -p python3 venv
+<div class="highlight"><pre><span></span>$ virtualenv -p python3 venv
 $ <span class="nb">source</span> venv/bin/activate
-</code></pre><p>Then install the ipympl plugin and enable it (it will automatically
+</pre></div>
+<p>Then install the ipympl plugin and enable it (it will automatically
 install jupyter, matplotlib and itself).</p>
-<pre><code>$ pip install ipympl
+<div class="highlight"><pre><span></span>$ pip install ipympl
 $ jupyter nbextension <span class="nb">enable</span> --py --sys-prefix ipympl
-</code></pre><p>Sometimes it is also required to enable Javascript widget.</p>
-<pre><code>$ jupyter nbextension <span class="nb">enable</span> --py --sys-prefix widgetsnbextension
-</code></pre></div>
+</pre></div>
+<p>Sometimes it is also required to enable Javascript widget.</p>
+<div class="highlight"><pre><span></span>$ jupyter nbextension <span class="nb">enable</span> --py --sys-prefix widgetsnbextension
+</pre></div>
+</div>
 <div class="section" id="plotting">
 <h2>Plotting</h2>
 <p>The usage is easy. Just import the <strong>ipympl</strong> module and matplotlib will
@@ -108,7 +112,7 @@ If there is need to rescale a axes it is easy with the pan axes feature.
 When the view is ready 'download plot' button will download the image or
 'export plot' button can save it into Jupyter notebook.</p>
 <p>Here is a short example with 80 MB.</p>
-<pre><code><span class="kn">import</span> <span class="nn">ipympl</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ipympl</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
@@ -117,7 +121,8 @@ When the view is ready 'download plot' button will download the image or
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;size of array is </span><span class="si">{}</span><span class="s1"> MB&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">nbytes</span> <span class="o">/</span> <span class="mi">10</span> <span class="o">**</span> <span class="mi">6</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">size</span><span class="p">),</span> <span class="n">data</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre><img alt="matplotlib interactive plot" src="https://podondra.cz/images/interactive-plotting-0.png" />
+</pre></div>
+<img alt="matplotlib interactive plot" src="https://podondra.cz/images/interactive-plotting-0.png" />
 </div>
 <div class="section" id="pros">
 <h2>Pros</h2>
@@ -130,7 +135,7 @@ web browser.</p>
 <p>Here is a WebSocket frame dumped by Chromium Developer Tools (with some
 parts strip off). The important part is the base64 encoded image (which
 is also shorted).</p>
-<pre><code><span class="p">{</span><span class="s1">&#39;buffers&#39;</span><span class="p">:</span> <span class="p">[],</span>
+<div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;buffers&#39;</span><span class="p">:</span> <span class="p">[],</span>
  <span class="s1">&#39;channel&#39;</span><span class="p">:</span> <span class="s1">&#39;iopub&#39;</span><span class="p">,</span>
  <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;comm_id&#39;</span><span class="p">:</span> <span class="s1">&#39;...&#39;</span><span class="p">,</span>
              <span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="s1">&#39;data:image/png;base64,i...C&#39;</span><span class="p">},</span>
@@ -150,7 +155,8 @@ is also shorted).</p>
                    <span class="s1">&#39;session&#39;</span><span class="p">:</span> <span class="s1">&#39;...&#39;</span><span class="p">,</span>
                    <span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="s1">&#39;username&#39;</span><span class="p">,</span>
                    <span class="s1">&#39;version&#39;</span><span class="p">:</span> <span class="s1">&#39;5.0&#39;</span><span class="p">}}</span>
-</code></pre></div>
+</pre></div>
+</div>
 <div class="section" id="conclusion">
 <h2>Conclusion</h2>
 <p>That's it. This approach makes it kind of easy. Matplotlib and Python are
