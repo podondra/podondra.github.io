@@ -4,9 +4,9 @@ The First Teacher, Chinghiz Aitmatov
 :data: 2017-04-19
 :tags: literature aitmatov
 
-The First Teacher (První učitel, 1962) is short novel by
+The First Teacher (První učitel, 1962) is novel by
 `Chinghiz Aitmatov <https://en.wikipedia.org/wiki/Chinghiz_Aitmatov>`__.
-I found this story in a book Selection of Soviet War and Post-war Literature.
+I found it in a book Selection of Soviet War and Post-war Literature.
 I read it because my literature teacher Mr. Štěpánek like the author.
 Generally, I am into russian literature (Dostoyevsky, Bulgakov).
 
