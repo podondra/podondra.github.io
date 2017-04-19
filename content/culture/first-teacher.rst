@@ -10,11 +10,17 @@ I found this story in a book Selection of Soviet War and Post-war Literature.
 I read it because my literature teacher Mr. Štěpánek like the author.
 Generally, I am into russian literature (Dostoyevsky, Bulgakov).
 
+Plot
+----
+
 The novel describes work of keen young self-taught teacher Düjšen
 and his impact on life of Altynaj.
 Altynaj is an orphan and Düjšen is promise of better future for her.
 She starts to loves her first teacher but after she goes to city
 they will never meet again.
+
+Thoughts
+--------
 
 It is strong story of good versus evil people.
 Story of very keen good man whose work is never appreciated.
