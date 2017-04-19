@@ -22,10 +22,11 @@ AUTHOR_FEED_RSS = None
 # My new stuff
 THEME = 'theme'
 DIRECT_TEMPLATES = ['index', 'categories']
-STATIC_PATHS = ['images', 'extra']
+STATIC_PATHS = ['images', 'extra', '../README.rst']
 EXTRA_PATH_METADATA = {
         'extra/keyboard.png': {'path': 'keyboard.png'},
         'extra/CNAME': {'path': 'CNAME'},
+        '../README.rst': {'path': 'README.rst' },
         }
 DEFAULT_DATE = 'fs'
 SUMMARY_MAX_LENGTH = 15
