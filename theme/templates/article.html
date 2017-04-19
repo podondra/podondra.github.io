@@ -18,7 +18,12 @@
 <footer>
     <time datetime="{{ article.date.isoformat() }}">
         {{ article.locale_date }}
+    </time><br>
+    {% if article.modified %}
+    <time datetime="{{ article.modified.isoformat() }}">
+        Last modified: {{ article.modified | strftime('%a %d %b %Y') }}
     </time>
+    {% endif %}
 </footer>
 <div>
     {{ article.content }}

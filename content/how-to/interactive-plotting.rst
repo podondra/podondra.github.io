@@ -2,6 +2,7 @@ How to Interactively Plot Big Data
 ==================================
 
 :date: 2017-01-21
+:modified: 2017-04-19
 :tags: jupyter, matplotlib, ipympl, python, data science
 
 In this article I'm about to show how to plot interactively Big Data in
@@ -9,21 +10,32 @@ Jupyter using Matplotlib. Data visualization is essential to data
 science. Interactivity helps to get rid of outliers or to focus on
 specific parts of data.
 
+Nbagg
+-----
+
 Interactive matplotlib figures are available in Jupyter (IPython)
 notebook from version 1.4
 (https://pelson.github.io/2014/nbagg\_backend/). There is an
 interactive backend called
 `nbagg <http://matplotlib.org/1.4.3/users/whats_new.html#the-nbagg-backend>`__.
+Just call this magic command and import matplotlib in your notebook:
 
-Recently, Jupyter plugin
-`ipympl <https://github.com/matplotlib/jupyter-matplotlib>`__ has been
-created to "*... separate developement of the Jupyter integration
+.. code-block:: python3
+
+    %matplotlib nbagg
+    import matplotlib.pyplot as plt
+
+Ipympl
+------
+
+Jupyter plugin `ipympl <https://github.com/matplotlib/jupyter-matplotlib>`__
+has been created to "*... separate developement of the Jupyter integration
 (future versions of notebook and Jupyter Lab) from the calendar of the
 releases of the main matplotlib repository.*\ ". This plugin requires
-matplotlib v2.0.0.
+matplotlib v2.0.0. But it seem inactive nowadays.
 
 Installation
-------------
+~~~~~~~~~~~~
 
 I recommend to create an virtual environment.
 
@@ -49,8 +61,7 @@ Sometimes it is also required to enable Javascript widget.
 Plotting
 --------
 
-The usage is easy. Just import the **ipympl** module and matplotlib will
-plot a graph with this set of buttons.
+In interactive mode matplotlib will plot a graph with this set of buttons.
 
 - reset original view
 - back to previous view
@@ -70,7 +81,7 @@ Here is a short example with 80 MB.
 
 .. code-block:: python3
 
-    import ipympl
+    %matplotlib nbagg
     import matplotlib.pyplot as plt
     import numpy as np
     
@@ -85,7 +96,7 @@ Here is a short example with 80 MB.
     :alt: matplotlib interactive plot
 
 Pros
-----
+~~~~
 
 Jupyter is client-server application. The communication is done over
 `WebSocket <https://en.wikipedia.org/wiki/WebSocket>`__. This is great
