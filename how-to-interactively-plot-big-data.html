@@ -60,6 +60,9 @@ ga('send', 'pageview');
 <footer>
     <time datetime="2017-01-21T00:00:00+01:00">
         Sat 21 January 2017
+    </time><br>
+    <time datetime="2017-04-19T00:00:00+02:00">
+        Last modified: Wed 19 Apr 2017
     </time>
 </footer>
 <div>
@@ -67,19 +70,27 @@ ga('send', 'pageview');
 Jupyter using Matplotlib. Data visualization is essential to data
 science. Interactivity helps to get rid of outliers or to focus on
 specific parts of data.</p>
+<div class="section" id="nbagg">
+<h2>Nbagg</h2>
 <p>Interactive matplotlib figures are available in Jupyter (IPython)
 notebook from version 1.4
 (<a class="reference external" href="https://pelson.github.io/2014/nbagg_backend/">https://pelson.github.io/2014/nbagg_backend/</a>). There is an
 interactive backend called
-<a class="reference external" href="http://matplotlib.org/1.4.3/users/whats_new.html#the-nbagg-backend">nbagg</a>.</p>
-<p>Recently, Jupyter plugin
-<a class="reference external" href="https://github.com/matplotlib/jupyter-matplotlib">ipympl</a> has been
-created to &quot;<em>... separate developement of the Jupyter integration
+<a class="reference external" href="http://matplotlib.org/1.4.3/users/whats_new.html#the-nbagg-backend">nbagg</a>.
+Just call this magic command and import matplotlib in your notebook:</p>
+<div class="highlight"><pre><span></span><span class="o">%</span><span class="n">matplotlib</span> <span class="n">nbagg</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+<div class="section" id="ipympl">
+<h2>Ipympl</h2>
+<p>Jupyter plugin <a class="reference external" href="https://github.com/matplotlib/jupyter-matplotlib">ipympl</a>
+has been created to &quot;<em>... separate developement of the Jupyter integration
 (future versions of notebook and Jupyter Lab) from the calendar of the
 releases of the main matplotlib repository.</em>&quot;. This plugin requires
-matplotlib v2.0.0.</p>
+matplotlib v2.0.0. But it seem inactive nowadays.</p>
 <div class="section" id="installation">
-<h2>Installation</h2>
+<h3>Installation</h3>
 <p>I recommend to create an virtual environment.</p>
 <div class="highlight"><pre><span></span>$ virtualenv -p python3 venv
 $ <span class="nb">source</span> venv/bin/activate
@@ -93,10 +104,10 @@ $ jupyter nbextension <span class="nb">enable</span> --py --sys-prefix ipympl
 <div class="highlight"><pre><span></span>$ jupyter nbextension <span class="nb">enable</span> --py --sys-prefix widgetsnbextension
 </pre></div>
 </div>
+</div>
 <div class="section" id="plotting">
 <h2>Plotting</h2>
-<p>The usage is easy. Just import the <strong>ipympl</strong> module and matplotlib will
-plot a graph with this set of buttons.</p>
+<p>In interactive mode matplotlib will plot a graph with this set of buttons.</p>
 <ul class="simple">
 <li>reset original view</li>
 <li>back to previous view</li>
@@ -112,7 +123,7 @@ If there is need to rescale a axes it is easy with the pan axes feature.
 When the view is ready 'download plot' button will download the image or
 'export plot' button can save it into Jupyter notebook.</p>
 <p>Here is a short example with 80 MB.</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ipympl</span>
+<div class="highlight"><pre><span></span><span class="o">%</span><span class="n">matplotlib</span> <span class="n">nbagg</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
@@ -123,9 +134,8 @@ When the view is ready 'download plot' button will download the image or
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 <img alt="matplotlib interactive plot" src="https://podondra.cz/images/interactive-plotting-0.png" />
-</div>
 <div class="section" id="pros">
-<h2>Pros</h2>
+<h3>Pros</h3>
 <p>Jupyter is client-server application. The communication is done over
 <a class="reference external" href="https://en.wikipedia.org/wiki/WebSocket">WebSocket</a>. This is great
 in case of Big Data plotting because all the rendering is done server
@@ -156,6 +166,7 @@ is also shorted).</p>
                    <span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="s1">&#39;username&#39;</span><span class="p">,</span>
                    <span class="s1">&#39;version&#39;</span><span class="p">:</span> <span class="s1">&#39;5.0&#39;</span><span class="p">}}</span>
 </pre></div>
+</div>
 </div>
 <div class="section" id="conclusion">
 <h2>Conclusion</h2>
