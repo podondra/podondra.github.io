@@ -22,7 +22,8 @@ but do you want to publish chart or be scared.
 Example
 -------
 
-An example of statistic from my football club: 
+An example of statistic from my football club
+(try to hover over the bars):
 
 .. raw:: html
 
