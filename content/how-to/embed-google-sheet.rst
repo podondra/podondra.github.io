@@ -1,5 +1,5 @@
-How to Embed Google Sheet
-=========================
+How to Embed Google Sheet Chart
+===============================
 
 :date: 2017-04-19
 :tags: sheet, vizualization
