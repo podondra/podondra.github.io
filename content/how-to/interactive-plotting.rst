@@ -3,7 +3,7 @@ How to Interactively Plot Big Data
 
 :date: 2017-01-21
 :modified: 2017-04-19
-:tags: jupyter, matplotlib, ipympl, python, data science
+:tags: jupyter, matplotlib, ipympl, python, vizualization
 
 In this article I'm about to show how to plot interactively Big Data in
 Jupyter using Matplotlib. Data visualization is essential to data
