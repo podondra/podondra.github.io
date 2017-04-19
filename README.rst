@@ -11,4 +11,4 @@ TODO
 ----
 
 - add feeds, rss
-- get on planetpython.org
+- load disqus on click
