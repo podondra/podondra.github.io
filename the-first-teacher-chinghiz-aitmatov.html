@@ -88,19 +88,33 @@ But from the collective perspective it fails.</p>
 
 </div>
 
+<button id="disqus_button" class="disqus-comment-count" data-disqus-identifier="the-first-teacher-chinghiz-aitmatov.html">
+    Comments
+</button>
 <div id="disqus_thread"></div>
+
+<!-- jquery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script id="dsq-count-scr" src="//podondra.disqus.com/count.js" async></script>
 <script>
 var disqus_config = function () {
     this.page.url = 'https://podondra.cz';
     this.page.identifier = 'the-first-teacher-chinghiz-aitmatov.html';
 };
 
-(function() {
-    var d = document, s = d.createElement('script');
-    s.src = '//podondra.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-})();
+$(document).ready(function () {
+    $('#disqus_button').on('click', function () {
+        var src = '//podondra.disqus.com/embed.js';
+        $.ajax({
+            type: 'GET',
+            url: src,
+            dataType: 'script',
+            cache: true,
+        });
+
+        $(this).fadeOut();
+    });
+});
 </script>
     </section>
 </body>
