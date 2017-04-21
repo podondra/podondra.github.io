@@ -2,6 +2,7 @@ How to Embed Google Sheet Chart
 ===============================
 
 :date: 2017-04-19
+:modified: 2017-04-21
 :tags: sheet, vizualization
 
 In this article I am going to shows how to embed a chart from
@@ -22,12 +23,18 @@ but do you want to publish chart or be scared.
 Example
 -------
 
-An example of statistic from my football club
-(try to hover over the bars):
+An example of bar chart statistic from my football club
+(try to hover over the bars).
 
 .. raw:: html
 
     <iframe width="960" height="600" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/1feW5hUR1_lVC9qylgzzvvnoD79YoNXim9oR7W4rWzk4/pubchart?oid=1472796028&amp;format=interactive"></iframe>
+
+Or, interactive line plot (hover over points). The peak is friendly match.
+
+.. raw:: html
+
+    <iframe width="960" height="400" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/1feW5hUR1_lVC9qylgzzvvnoD79YoNXim9oR7W4rWzk4/pubchart?oid=1321294546&amp;format=interactive"></iframe>
 
 Conclusion
 ----------
