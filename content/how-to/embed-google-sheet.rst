@@ -28,7 +28,7 @@ An example of bar chart statistic from my football club
 
 .. raw:: html
 
-    <iframe width="960" height="600" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/1feW5hUR1_lVC9qylgzzvvnoD79YoNXim9oR7W4rWzk4/pubchart?oid=1472796028&amp;format=interactive"></iframe>
+    <iframe width="960" height="700" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/1feW5hUR1_lVC9qylgzzvvnoD79YoNXim9oR7W4rWzk4/pubchart?oid=1472796028&amp;format=interactive"></iframe>
 
 Or, interactive line plot (hover over points). The peak is friendly match.
 
