@@ -5,10 +5,9 @@ Deep Learning in Large Astronomical Spectra Archives
 :tags: machine learning, astronomy
 
 In this post I would like to introduce my bachelor's thesis.
-I did this work during my studies at Faculty of Information Technology,
-Department of Theorerical Computer Science, Czech Technical University.
+I did this work during my studies at Faculty of Information Technology, CTU.
 I would not be able to finish this work without help of my supervisor
-Petr Škoda.
+Petr Škoda from ASU CAS.
 The work is **available online** at
 `Zenodo <https://doi.org/10.5281/zenodo.818247>`__.
 
@@ -34,12 +33,17 @@ Code
 
 All source files are at `GitHub <https://github.com/podondra/bt-spectraldl>`__.
 There are both thesis' TeX sources and Jupyter notebooks with experiments'
-code.
+code. Here is a sample Matplotlib image of
+`t-SNE <https://lvdmaaten.github.io/tsne/>`__ dimensionality reduction
+of spectral data from Ondřejov observatory.
+
+.. image:: {filename}/images/tsne-ondrejov.png
+    :alt: t-SNE of Ondřejov dataset
 
 BibTeX
 ------
 
-To cite this work here is my BibTeX entry.
+To cite this work please use this BibTeX entry.
 
 .. code-block:: tex
 
