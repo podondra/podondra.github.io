@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>podondra site</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Ondřej Podsztavek">
+    <!-- mobile specific -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://podondra.cz/theme/css/skeleton.css">
+    <link rel="stylesheet" href="https://podondra.cz/theme/css/pygment.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <!-- font awesome icons -->
+    <script src="https://use.fontawesome.com/2c3fc9ca95.js"></script>
+    <!-- favicon -->
+    <link rel="icon" type="image/png" href="https://podondra.cz/keyboard.png">
+    <script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-89944397-1', 'auto');
+ga('send', 'pageview');
+    </script>
+
+
+    <meta name="tags" content="machine learning" />
+    <meta name="tags" content="astronomy" />
+</head>
+
+<body>
+    <header class="container">
+        <h1>podondra site</h1>
+    </header>
+    <nav class="container">
+        <a class="button" href="https://podondra.cz/index.html">
+            <i class="fa fa-folder" aria-hidden="true"></i>
+            index
+        </a>
+        <a class="button" href="https://podondra.cz/categories.html">
+            <i class="fa fa-binoculars" aria-hidden="true"></i>
+            categories
+        </a>
+        <a class="button" href="https://podondra.cz/author/ondrej-podsztavek.html">
+            <i class="fa fa-shower" aria-hidden="true"></i>
+            about me
+        </a>
+        <a class="button" href="https://github.com/podondra">
+            <i class="fa fa-github-alt" aria-hidden="true"></i>
+            github
+        </a>
+    </nav>
+    <section class="container">
+<header>
+    <h1>Deep Learning in Large Astronomical Spectra Archives</h1>
+</header>
+<footer>
+    <time datetime="2017-06-27T00:00:00+02:00">
+        Tue 27 June 2017
+    </time><br>
+</footer>
+<div>
+    <p>In this post I would like to introduce my bachelor's thesis.
+I did this work during my studies at Faculty of Information Technology, CTU.
+I would not be able to finish this work without help of my supervisor
+Petr Škoda from ASU CAS.
+The work is <strong>available online</strong> at
+<a class="reference external" href="https://doi.org/10.5281/zenodo.818247">Zenodo</a>.</p>
+<div class="section" id="abstract">
+<h2>Abstract</h2>
+<p>Large astronomical archives, as for example LAMOST spectral archive,
+contain plenty of hidden information.
+Deep learning is currently very popular method used
+to gain knowledge from this kind of data.
+This work shows the process of finding emission-line spectra in
+LAMOST archive using deep convolutional neural network trained
+on data from Ondřejov 2m telescope.
+Overview of several techniques as spectra preprocessing,
+domain adaptation of Ondřejov data to LAMOST resolution,
+dimensionality reduction, architecture
+and training of two deep neural networks are presented.
+Finally, discovered objects with interesting physical nature deserving
+further detailed analysis are discussed.</p>
+</div>
+<div class="section" id="slides">
+<h2>Slides</h2>
+<p>I was lucky that I had the chance to present my results at EWASS 2017 conference
+in Prague.</p>
+<iframe src="https://docs.google.com/presentation/d/1KtuCpfUhdPsUy9Cm45t26zV8IkXh5pOx8R49gjD_6gE/embed?start=false&loop=false&delayms=3000" frameborder="0" width="480" height="389" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe></div>
+<div class="section" id="code">
+<h2>Code</h2>
+<p>All source files are at <a class="reference external" href="https://github.com/podondra/bt-spectraldl">GitHub</a>.
+There are both thesis' TeX sources and Jupyter notebooks with experiments'
+code. Here is a sample Matplotlib image of
+<a class="reference external" href="https://lvdmaaten.github.io/tsne/">t-SNE</a> dimensionality reduction
+of spectral data from Ondřejov observatory.</p>
+<img alt="t-SNE of Ondřejov dataset" src="https://podondra.cz/images/tsne-ondrejov.png" />
+</div>
+<div class="section" id="bibtex">
+<h2>BibTeX</h2>
+<p>To cite this work please use this BibTeX entry.</p>
+<div class="highlight"><pre><span></span>@article<span class="nb">{</span>
+    podsztavek2017,
+    author = <span class="nb">{</span>Podsztavek, Ondřej<span class="nb">}</span>,
+    title = <span class="nb">{</span>Deep Learning in Large Astronomical Spectra Archives<span class="nb">}</span>,
+    year = 2017,
+    month = may,
+    pages = 38,
+    doi = <span class="nb">{</span>10.5281/zenodo.818247<span class="nb">}</span>,
+<span class="nb">}</span>
+</pre></div>
+</div>
+
+</div>
+
+<button id="disqus_button" class="disqus-comment-count" data-disqus-identifier="deep-learning-in-large-astronomical-spectra-archives.html">
+    Comments
+</button>
+<div id="disqus_thread"></div>
+
+<!-- jquery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script id="dsq-count-scr" src="//podondra.disqus.com/count.js"></script>
+<script>
+var disqus_config = function () {
+    this.page.url = 'https://podondra.cz';
+    this.page.identifier = 'deep-learning-in-large-astronomical-spectra-archives.html';
+};
+
+$(document).ready(function () {
+    $('#disqus_button').on('click', function () {
+        $.ajax({
+            type: 'GET',
+            url: '//podondra.disqus.com/embed.js',
+            dataType: 'script',
+            cache: true,
+        });
+
+        $(this).hide()
+    });
+});
+</script>
+    </section>
+</body>
+</html>
