@@ -28,6 +28,16 @@ and training of two deep neural networks are presented.
 Finally, discovered objects with interesting physical nature deserving
 further detailed analysis are discussed.
 
+Slides
+------
+
+I was lucky that I had the chance to present my results at EWASS 2017 conference
+in Prague.
+
+.. raw:: html
+
+    <iframe src="https://docs.google.com/presentation/d/1KtuCpfUhdPsUy9Cm45t26zV8IkXh5pOx8R49gjD_6gE/embed?start=false&loop=false&delayms=3000" frameborder="0" width="480" height="389" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
 Code
 ----
 
