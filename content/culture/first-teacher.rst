@@ -1,7 +1,7 @@
 The First Teacher, Chinghiz Aitmatov
 ====================================
 
-:data: 2017-04-19
+:date: 2017-04-19
 :tags: literature aitmatov
 
 The First Teacher (První učitel, 1962) is novel by
