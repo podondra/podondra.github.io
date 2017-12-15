@@ -2,6 +2,7 @@ Title: Deep Q-network
 Date: 2017-12-11 08:51
 Category: reinforcement learning
 Tags: dqn, deep q-network, reinforcement learning, deep learning
+Status: draft
 
 Deep Q-network ([DQN][1]) is a DeepRL system which combines deep neural networks
 with reinforcement learning and is able to master a diverse range of
@@ -20,12 +21,9 @@ This algorithm leverages recent breakthroughs in training deep neural networks
 to show that DQN is able to achieve superhuman performance across a diverse
 range of 49 game scenarios.
 
-![`Q^{*}(s, a) = max_{\pi} \mathbb{E}[r_t + \gamma r_{t + 1} + \gamma ^ 2
-r_{t + 2} + \dots | s_t = s, a_t = a, \pi]`]({filename}/images/equation.svg)
-
 ## Reinforcement Learning
 
-Refer to book (Reinforcement Learning: An Introduction)[4] by Sutton and Barto.
+Refer to book [Reinforcement Learning: An Introduction][4] by Sutton and Barto.
 
 [4]: http://incompleteideas.net/book/bookdraft2017nov5.pdf
      (Sutton and Barto - Reinforcement Learning: An Introduction)
@@ -75,38 +73,66 @@ as it is usually followed by states that yield high rewards.
 The last element is a model of the environment which mimics the behaviour
 of the environment or allows inferences about how the environment will behave.
 They are used for estimating future situations before they are actually
-experiended (planning).
+experienced (planning).
 
 Most of the reinforcement learning methods are concerned with estimating value
 functions (except evolutionary methods).
 
 ## Q-learning
 
+Q-learning is model-free reinforcement learning method which finds optimal
+action-selection policy for a given finite Markov decision process (MDP)
+by learning an action-value function `Q`:
+
+`Q^{*}(s, a) = max_{\pi} \mathbb{E}[r_t + \gamma r_{t + 1} + \gamma ^ 2
+r_{t + 2} + \dots | s_t = s, a_t = a, \pi]`
+
+which is the maximum sum of rewards `r_t` discounted by `\gamma` at each time
+step `t`, achievable by a behaviour policy `\pi = P(a|s)`,
+after making an observation `s` and taking action `a`.
+
+It is proven that Q-learning method will find a optimal policy
+for any finite MDP.
+
 [5]: http://www.cs.rhul.ac.uk/~chrisw/thesis.html
      (Learning from Delayed Rewards)
 [6]: https://link.springer.com/article/10.1007/BF00992698
      (Technical Note Q-learning)
 
-## DQN
+## Deep Q-network
+
+To use reinforcement learning successfully agents must derive efficient
+environment representations from high-dimensional sensory inputs
+and generalize past experience to new situations.
+The DQN bridges the gap between high-dimensional sensory inputs and actions
+and so learning to excel at a diverse array of tasks
+with same architecture and hyperparameters.
+
+- [Playing Atari with Deep Reinforcement Learning][7]
+- [Human-level control through deep reinforcement learning][6]
 
 [6]: https://www.nature.com/articles/nature14236 (DQN Paper)
 [7]: https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf
      (Playing Atari with Deep Reinforcement Learning)
 
+DQN is combination of reinforcement learning with deep convolutional networks.
+Formally the neural network approximate the optimal action-value function
+above, because neural networks are universal approximators.
+
 ### Variants
 
 Provided on [OpenAI Baselines][8].
 
-[Double Q Learning][9] corrects the stock DQN algorithm’s tendency to sometimes
+[Double Q-learning][9] corrects the stock DQN algorithm's tendency to sometimes
 overestimate the values tied to specific actions.
 
-[Prioritized Replay][10] extends DQN’s experience replay function by learning
+[Prioritized Replay][10] extends DQN's experience replay function by learning
 to replay memories where the real reward significantly diverges from the
 expected reward, letting the agent adjust itself in response to developing
 incorrect assumptions.
 
 [Dueling DQN][11] splits the neural network into two.
-One learns to provide an estimate of the value at every timestep,
+One learns to provide an estimate of the value at every time step,
 and the other calculates potential advantages of each action,
 and the two are combined for a single action-advantage Q function.
 
