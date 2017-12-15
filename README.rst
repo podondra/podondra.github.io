@@ -9,9 +9,3 @@ and articles are published to *master* by issuing :code:`make github`
 
 .. _pelican: https://blog.getpelican.com/
 .. _skeleton: http://getskeleton.com/
-
-TODO
-----
-
-- add feeds, rss
-- load disqus on click
