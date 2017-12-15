@@ -21,7 +21,7 @@ AUTHOR_FEED_RSS = None
 # My new stuff
 THEME = 'theme'
 DIRECT_TEMPLATES = ['index', 'categories']
-STATIC_PATHS = ['images', 'extra', '../README.rst']
+STATIC_PATHS = ['images', 'slides', 'extra', '../README.rst']
 EXTRA_PATH_METADATA = {
         'extra/keyboard.png': {'path': 'keyboard.png'},
         'extra/CNAME': {'path': 'CNAME'},
