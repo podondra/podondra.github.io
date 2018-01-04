@@ -29,3 +29,5 @@ EXTRA_PATH_METADATA = {
         }
 DEFAULT_DATE = 'fs'
 SUMMARY_MAX_LENGTH = 15
+PLUGIN_PATHS = ['plugins', 'pelican-plugins']
+PLUGINS = ['render_math']
