@@ -82,14 +82,14 @@ functions (except evolutionary methods).
 
 Q-learning is model-free reinforcement learning method which finds optimal
 action-selection policy for a given finite Markov decision process (MDP)
-by learning an action-value function `Q`:
+by learning an action-value function $Q$:
 
-`Q^{*}(s, a) = max_{\pi} \mathbb{E}[r_t + \gamma r_{t + 1} + \gamma ^ 2
-r_{t + 2} + \dots | s_t = s, a_t = a, \pi]`
+$Q^{*}(s, a) = max_{\pi} \mathbb{E}[r_t + \gamma r_{t + 1} + \gamma ^ 2
+r_{t + 2} + \dots | s_t = s, a_t = a, \pi]$
 
-which is the maximum sum of rewards `r_t` discounted by `\gamma` at each time
-step `t`, achievable by a behaviour policy `\pi = P(a|s)`,
-after making an observation `s` and taking action `a`.
+which is the maximum sum of rewards $r_t$ discounted by $\gamma$ at each time
+step $t$, achievable by a behaviour policy $\pi = P(a|s)$,
+after making an observation $s$ and taking action $a$.
 
 It is proven that Q-learning method will find a optimal policy
 for any finite MDP.
