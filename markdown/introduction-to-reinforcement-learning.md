@@ -175,7 +175,7 @@ A fundamental property of value functions is that they satisfy recursive
 relationships called *Bellman equations*.
 For example the Bellman equation of state-value function:
 
-\\[v\_{\\pi}(s) \\equiv \\mathbb{E}\_{\pi}(R\_{t + 1} + \\gamma
+\\[v\_{\\pi}(s) \\equiv \\mathbb{E}\_{\\pi}(R\_{t + 1} + \\gamma
 v\_{\\pi}(S\_{t + 1}) | S\_t = s).\\]
 
 Solving a reinforcement learning problem is roughly finding a policy that
@@ -220,7 +220,7 @@ for improving approximations of the desired value functions.
 ### Policy Evaluation
 
 Consider how to compute state-value function \\(v\_{\\pi}\\) for a given policy
-\\(\pi\\).
+\\(\\pi\\).
 Having a sequence of approximate value function \\(v\_0, v\_1, v\_2, \\dots\\)
 each mapping \\(\\mathcal{S} \to \\mathbb{R}\\).
 The first approximation \\(v\_0\\) is chosen arbitrarily.
@@ -278,7 +278,7 @@ The state-value function computed by the policy evaluation algorithm can be
 used to find better policies.
 New better *greedy* policy is determined by
 
-\\[\pi'(s) \\equiv \\operatorname{argmax}\_a q\_\\pi(s, a) =
+\\[\\pi'(s) \\equiv \\operatorname{argmax}\_a q\_\\pi(s, a) =
 \\operatorname{argmax}\_a \\mathbb{E}(R\_{t + 1} + \\gamma v\_\\pi(S\_{t + 1}) |
 S\_t = s, A\_t = a).\\]
 
@@ -578,9 +578,9 @@ so natural way to estimate is by averaging received rewards:
 {\\sum^{t - 1}\_{i = 1} 1\_{A\_i = a}},\\]
 
 where \\(\\mathbb{1}\_{\\text{condition}}\\) is random variable indicator
-that is \\(1\\) if condition is true else \\(0\\).
-If the denominator is \\(0\\) then \\(Q\_t(a)\\) is defined as a default value
-(for example \\(0\\)).
+that is 1 if condition is true else 0.
+If the denominator is 0 then \\(Q\_t(a)\\) is defined as a default value
+(for example 0).
 Moreover if the denominator goes to infinity
 then \\(Q\_t(a)\\) converges to \\(q\_\*(a)\\).
 This way of estimating action values is called *sample-average*.
