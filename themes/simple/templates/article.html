@@ -17,8 +17,6 @@
     <h2 class="entry-title">
       <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"
          title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a></h2>
- {% import 'translations.html' as translations with context %}
- {{ translations.translations_for(article) }}
   </header>
   <footer class="post-info">
     <time class="published" datetime="{{ article.date.isoformat() }}">
@@ -29,16 +27,9 @@
       {{ article.locale_modified }}
     </time>
 	{% endif %}
-    {% if article.authors %}
-    <address class="vcard author">
-      By {% for author in article.authors %}
-          <a class="url fn" href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>
-        {% endfor %}
-    </address>
-    {% endif %}
-  </footer><!-- /.post-info -->
+  </footer>
   <div class="entry-content">
     {{ article.content }}
-  </div><!-- /.entry-content -->
+  </div>
 </section>
 {% endblock %}
