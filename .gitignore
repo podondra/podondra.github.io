@@ -1,8 +1,0 @@
-*.pid
-_site/
-.sass-cache/
-.jekyll-metadata
-output/
-__pycache__/
-venv/
-.ipynb_checkpoints/
