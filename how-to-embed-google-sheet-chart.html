@@ -1,131 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-        <title>podondra site</title>
-    <meta charset="utf-8">
-    <meta name="author" content="Ondřej Podsztavek">
-    <!-- mobile specific -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-    <link rel="stylesheet" href="https://podondra.cz/theme/css/skeleton.css">
-    <link rel="stylesheet" href="https://podondra.cz/theme/css/pygment.css">
-    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-    <!-- font awesome icons -->
-    <script src="https://use.fontawesome.com/2c3fc9ca95.js"></script>
-    <!-- favicon -->
-    <link rel="icon" type="image/png" href="https://podondra.cz/keyboard.png">
-    <script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-ga('create', 'UA-89944397-1', 'auto');
-ga('send', 'pageview');
-    </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0-alpha2/katex.min.css" integrity="sha384-exe4Ak6B0EoJI0ogGxjJ8rn+RN3ftPnEQrGwX59KTCl5ybGzvHGKjhPKk/KC3abb" crossorigin="anonymous">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0-alpha2/katex.min.js" integrity="sha384-OMvkZ24ANLwviZR2lVq8ujbE/bUO8IR1FdBrKLQBI14Gq5Xp/lksIccGkmKL8m+h" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0-alpha2/contrib/auto-render.min.js" integrity="sha384-cXpztMJlr2xFXyDSIfRWYSMVCXZ9HeGXvzyKTYrn03rsMAlOtIQVzjty5ULbaP8L" crossorigin="anonymous"></script>
-
-
-    <meta name="tags" content="sheet" />
-    <meta name="tags" content="vizualization" />
+<meta charset="UTF-8">
+<title>
+How to Embed Google Sheet Chart
+</title>
 </head>
-
 <body>
-    <header class="container">
-        <h1>podondra site</h1>
-    </header>
-    <nav class="container">
-        <a class="button" href="https://podondra.cz/index.html">
-            <i class="fa fa-folder" aria-hidden="true"></i>
-            index
-        </a>
-        <a class="button" href="https://podondra.cz/categories.html">
-            <i class="fa fa-binoculars" aria-hidden="true"></i>
-            categories
-        </a>
-        <a class="button" href="https://podondra.cz/author/ondrej-podsztavek.html">
-            <i class="fa fa-shower" aria-hidden="true"></i>
-            about me
-        </a>
-        <a class="button" href="https://github.com/podondra">
-            <i class="fa fa-github-alt" aria-hidden="true"></i>
-            github
-        </a>
-    </nav>
-    <section class="container">
-<header>
-    <h1>How to Embed Google Sheet Chart</h1>
-</header>
-<footer>
-    <time datetime="2017-04-19T00:00:00+02:00">
-        Wed 19 April 2017
-    </time><br>
-    <time datetime="2017-04-21T00:00:00+02:00">
-        Last modified: Fri 21 Apr 2017
-    </time>
-</footer>
-<div>
-    <p>In this article I am going to shows how to embed a chart from
-<a class="reference external" href="https://sheets.google.com/">Google Sheets</a> in
-<a class="reference external" href="https://en.wikipedia.org/wiki/HTML">HTML</a>.</p>
-<div class="section" id="guide">
-<h2>Guide</h2>
-<p>There a is
-<a class="reference external" href="https://support.google.com/docs/answer/183965?hl=en">guide by Google</a>.
-Basically, you create chart and select &quot;Publish chart...'
-from dropdown menu in right top corner.
-Then you just copy and paste the <code>iframe</code> to your site.
-I heard a lot of bad things about iframes
-but do you want to publish chart or be scared.</p>
-</div>
-<div class="section" id="example">
-<h2>Example</h2>
-<p>An example of bar chart statistic from my football club
-(try to hover over the bars).</p>
-<iframe width="960" height="700" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/1feW5hUR1_lVC9qylgzzvvnoD79YoNXim9oR7W4rWzk4/pubchart?oid=1472796028&amp;format=interactive"></iframe><p>Or, interactive line plot (hover over points).</p>
-<iframe width="960" height="400" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/1feW5hUR1_lVC9qylgzzvvnoD79YoNXim9oR7W4rWzk4/pubchart?oid=1321294546&amp;format=interactive"></iframe></div>
-<div class="section" id="conclusion">
-<h2>Conclusion</h2>
-<p>The resulting chart may be interactive and it can be automatically republish
-when changes are made.
-But be patient with size of the chart.
-Try to keep the sizes the same.
-Finally, the chart yout get is nice and the data are store in simple sheet.</p>
-</div>
-
-</div>
-
-<button id="disqus_button" class="disqus-comment-count" data-disqus-identifier="how-to-embed-google-sheet-chart.html">
-    Comments
-</button>
-<div id="disqus_thread"></div>
-
-<!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script id="dsq-count-scr" src="//podondra.disqus.com/count.js"></script>
-<script>
-var disqus_config = function () {
-    this.page.url = 'https://podondra.cz';
-    this.page.identifier = 'how-to-embed-google-sheet-chart.html';
-};
-
-$(document).ready(function () {
-    $('#disqus_button').on('click', function () {
-        $.ajax({
-            type: 'GET',
-            url: '//podondra.disqus.com/embed.js',
-            dataType: 'script',
-            cache: true,
-        });
-
-        $(this).hide()
-    });
-});
-</script>
-    </section>
-    <script>
-        renderMathInElement(document.body);
-    </script>
+<h1 id="how-to-embed-google-sheet-chart">How to Embed Google Sheet Chart</h1>
+<p>Published on 19th March 2017.</p>
+<p>In this article I am going to shows how to embed a chart from <a href="https://sheets.google.com/">Google Sheets</a> in <a href="https://en.wikipedia.org/wiki/HTML">HTML</a>.</p>
+<h2 id="guide">Guide</h2>
+<p>There a is <a href="https://support.google.com/docs/answer/183965?hl=en">guide by Google</a>. Basically, you create chart and select &quot;Publish chart...' from dropdown menu in right top corner. Then you just copy and paste the <code>iframe</code> to your site. I heard a lot of bad things about iframes but do you want to publish chart or be scared.</p>
+<h2 id="example">Example</h2>
+<p>An example of bar chart statistic from my football club (try to hover over the bars).</p>
+<iframe width="960" height="700" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/1feW5hUR1_lVC9qylgzzvvnoD79YoNXim9oR7W4rWzk4/pubchart?oid=1472796028&amp;format=interactive">
+</iframe>
+<p>Or, interactive line plot (hover over points).</p>
+<iframe width="960" height="400" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/1feW5hUR1_lVC9qylgzzvvnoD79YoNXim9oR7W4rWzk4/pubchart?oid=1321294546&amp;format=interactive">
+</iframe>
+<h2 id="conclusion">Conclusion</h2>
+<p>The resulting chart may be interactive and it can be automatically republish when changes are made. But be patient with size of the chart. Try to keep the sizes the same. Finally, the chart yout get is nice and the data are store in simple sheet.</p>
 </body>
 </html>

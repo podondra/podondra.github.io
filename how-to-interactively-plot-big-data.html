@@ -1,117 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-        <title>podondra site</title>
-    <meta charset="utf-8">
-    <meta name="author" content="Ondřej Podsztavek">
-    <!-- mobile specific -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-    <link rel="stylesheet" href="https://podondra.cz/theme/css/skeleton.css">
-    <link rel="stylesheet" href="https://podondra.cz/theme/css/pygment.css">
-    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-    <!-- font awesome icons -->
-    <script src="https://use.fontawesome.com/2c3fc9ca95.js"></script>
-    <!-- favicon -->
-    <link rel="icon" type="image/png" href="https://podondra.cz/keyboard.png">
-    <script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-ga('create', 'UA-89944397-1', 'auto');
-ga('send', 'pageview');
-    </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0-alpha2/katex.min.css" integrity="sha384-exe4Ak6B0EoJI0ogGxjJ8rn+RN3ftPnEQrGwX59KTCl5ybGzvHGKjhPKk/KC3abb" crossorigin="anonymous">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0-alpha2/katex.min.js" integrity="sha384-OMvkZ24ANLwviZR2lVq8ujbE/bUO8IR1FdBrKLQBI14Gq5Xp/lksIccGkmKL8m+h" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0-alpha2/contrib/auto-render.min.js" integrity="sha384-cXpztMJlr2xFXyDSIfRWYSMVCXZ9HeGXvzyKTYrn03rsMAlOtIQVzjty5ULbaP8L" crossorigin="anonymous"></script>
-
-
-    <meta name="tags" content="jupyter" />
-    <meta name="tags" content="matplotlib" />
-    <meta name="tags" content="ipympl" />
-    <meta name="tags" content="python" />
-    <meta name="tags" content="vizualization" />
+<meta charset="UTF-8">
+<title>
+How to Interactively Plot Big Data
+</title>
 </head>
-
 <body>
-    <header class="container">
-        <h1>podondra site</h1>
-    </header>
-    <nav class="container">
-        <a class="button" href="https://podondra.cz/index.html">
-            <i class="fa fa-folder" aria-hidden="true"></i>
-            index
-        </a>
-        <a class="button" href="https://podondra.cz/categories.html">
-            <i class="fa fa-binoculars" aria-hidden="true"></i>
-            categories
-        </a>
-        <a class="button" href="https://podondra.cz/author/ondrej-podsztavek.html">
-            <i class="fa fa-shower" aria-hidden="true"></i>
-            about me
-        </a>
-        <a class="button" href="https://github.com/podondra">
-            <i class="fa fa-github-alt" aria-hidden="true"></i>
-            github
-        </a>
-    </nav>
-    <section class="container">
-<header>
-    <h1>How to Interactively Plot Big Data</h1>
-</header>
-<footer>
-    <time datetime="2017-01-21T00:00:00+01:00">
-        Sat 21 January 2017
-    </time><br>
-    <time datetime="2017-04-19T00:00:00+02:00">
-        Last modified: Wed 19 Apr 2017
-    </time>
-</footer>
-<div>
-    <p>In this article I'm about to show how to plot interactively Big Data in
-Jupyter using Matplotlib. Data visualization is essential to data
-science. Interactivity helps to get rid of outliers or to focus on
-specific parts of data.</p>
-<div class="section" id="nbagg">
-<h2>Nbagg</h2>
-<p>Interactive matplotlib figures are available in Jupyter (IPython)
-notebook from version 1.4
-(<a class="reference external" href="https://pelson.github.io/2014/nbagg_backend/">https://pelson.github.io/2014/nbagg_backend/</a>). There is an
-interactive backend called
-<a class="reference external" href="http://matplotlib.org/1.4.3/users/whats_new.html#the-nbagg-backend">nbagg</a>.
-Just call this magic command and import matplotlib in your notebook:</p>
-<div class="highlight"><pre><span></span><span class="o">%</span><span class="n">matplotlib</span> <span class="n">nbagg</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-</pre></div>
-</div>
-<div class="section" id="ipympl">
-<h2>Ipympl</h2>
-<p>Jupyter plugin <a class="reference external" href="https://github.com/matplotlib/jupyter-matplotlib">ipympl</a>
-has been created to &quot;<em>... separate developement of the Jupyter integration
-(future versions of notebook and Jupyter Lab) from the calendar of the
-releases of the main matplotlib repository.</em>&quot;. This plugin requires
-matplotlib v2.0.0. But it seem inactive nowadays.</p>
-<div class="section" id="installation">
-<h3>Installation</h3>
+<h1 id="how-to-interactively-plot-big-data">How to Interactively Plot Big Data</h1>
+<p>Published on 21st January 2017.</p>
+<p>In this article I'm about to show how to plot interactively Big Data in Jupyter using Matplotlib. Data visualization is essential to data science. Interactivity helps to get rid of outliers or to focus on specific parts of data.</p>
+<h2 id="nbagg">Nbagg</h2>
+<p>Interactive matplotlib figures are available in Jupyter (IPython) notebook from <a href="https://pelson.github.io/2014/nbagg_backend/">version 1.4</a>. There is an interactive backend called <a href="http://matplotlib.org/1.4.3/users/whats_new.html#the-nbagg-backend%3E">nbagg</a>. Just call this magic command and import matplotlib in your notebook:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="op">%</span>matplotlib nbagg
+<span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</code></pre></div>
+<h2 id="ipympl">Ipympl</h2>
+<p>Jupyter plugin <a href="https://github.com/matplotlib/jupyter-matplotlib%3E">ipympl</a> has been created to &quot;<em>... separate developement of the Jupyter integration (future versions of notebook and Jupyter Lab) from the calendar of the releases of the main matplotlib repository.</em>&quot;. This plugin requires matplotlib v2.0.0. But it seem inactive nowadays.</p>
+<h2 id="installation">Installation</h2>
 <p>I recommend to create an virtual environment.</p>
-<div class="highlight"><pre><span></span>$ virtualenv -p python3 venv
-$ <span class="nb">source</span> venv/bin/activate
-</pre></div>
-<p>Then install the ipympl plugin and enable it (it will automatically
-install jupyter, matplotlib and itself).</p>
-<div class="highlight"><pre><span></span>$ pip install ipympl
-$ jupyter nbextension <span class="nb">enable</span> --py --sys-prefix ipympl
-</pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="ex">virtualenv</span> -p python3 venv
+$ <span class="bu">source</span> venv/bin/activate</code></pre></div>
+<p>Then install the ipympl plugin and enable it (it will automatically install jupyter, matplotlib and itself).</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="ex">pip</span> install ipympl
+$ <span class="ex">jupyter</span> nbextension enable --py --sys-prefix ipympl</code></pre></div>
 <p>Sometimes it is also required to enable Javascript widget.</p>
-<div class="highlight"><pre><span></span>$ jupyter nbextension <span class="nb">enable</span> --py --sys-prefix widgetsnbextension
-</pre></div>
-</div>
-</div>
-<div class="section" id="plotting">
-<h2>Plotting</h2>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="ex">jupyter</span> nbextension enable --py --sys-prefix widgetsnbextension</code></pre></div>
+<h2 id="plotting">Plotting</h2>
 <p>In interactive mode matplotlib will plot a graph with this set of buttons.</p>
-<ul class="simple">
+<ul>
 <li>reset original view</li>
 <li>back to previous view</li>
 <li>forward to next view</li>
@@ -120,96 +36,45 @@ $ jupyter nbextension <span class="nb">enable</span> --py --sys-prefix ipympl
 <li>download plot</li>
 <li>export plot</li>
 </ul>
-<p>Features are obvious from the button names. The rectangle zoom is
-really great as you can easily choose the important part of your data.
-If there is need to rescale a axes it is easy with the pan axes feature.
-When the view is ready 'download plot' button will download the image or
-'export plot' button can save it into Jupyter notebook.</p>
+<p>Features are obvious from the button names. The rectangle zoom is really great as you can easily choose the important part of your data. If there is need to rescale a axes it is easy with the pan axes feature. When the view is ready 'download plot' button will download the image or 'export plot' button can save it into Jupyter notebook.</p>
 <p>Here is a short example with 80 MB.</p>
-<div class="highlight"><pre><span></span><span class="o">%</span><span class="n">matplotlib</span> <span class="n">nbagg</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="op">%</span>matplotlib nbagg
+<span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt
+<span class="im">import</span> numpy <span class="im">as</span> np
 
-<span class="n">size</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">**</span> <span class="mi">7</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;size of array is </span><span class="si">{}</span><span class="s1"> MB&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">nbytes</span> <span class="o">/</span> <span class="mi">10</span> <span class="o">**</span> <span class="mi">6</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">size</span><span class="p">),</span> <span class="n">data</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-<img alt="matplotlib interactive plot" src="https://podondra.cz/images/interactive-plotting-0.png" />
-<div class="section" id="pros">
-<h3>Pros</h3>
-<p>Jupyter is client-server application. The communication is done over
-<a class="reference external" href="https://en.wikipedia.org/wiki/WebSocket">WebSocket</a>. This is great
-in case of Big Data plotting because all the rendering is done server
-side and the only thing left for a client browser is to display the
-image. So there is no worry about computational power of a notebook or a
-web browser.</p>
-<p>Here is a WebSocket frame dumped by Chromium Developer Tools (with some
-parts strip off). The important part is the base64 encoded image (which
-is also shorted).</p>
-<div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;buffers&#39;</span><span class="p">:</span> <span class="p">[],</span>
- <span class="s1">&#39;channel&#39;</span><span class="p">:</span> <span class="s1">&#39;iopub&#39;</span><span class="p">,</span>
- <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;comm_id&#39;</span><span class="p">:</span> <span class="s1">&#39;...&#39;</span><span class="p">,</span>
-             <span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="s1">&#39;data:image/png;base64,i...C&#39;</span><span class="p">},</span>
-                      <span class="s1">&#39;method&#39;</span><span class="p">:</span> <span class="s1">&#39;custom&#39;</span><span class="p">}},</span>
- <span class="s1">&#39;header&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;2017-01-21T06:35:29.176238&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;msg_id&#39;</span><span class="p">:</span> <span class="s1">&#39;...&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;msg_type&#39;</span><span class="p">:</span> <span class="s1">&#39;comm_msg&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;session&#39;</span><span class="p">:</span> <span class="s1">&#39;...&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="s1">&#39;...&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;version&#39;</span><span class="p">:</span> <span class="s1">&#39;5.0&#39;</span><span class="p">},</span>
- <span class="s1">&#39;metadata&#39;</span><span class="p">:</span> <span class="p">{},</span>
- <span class="s1">&#39;msg_id&#39;</span><span class="p">:</span> <span class="s1">&#39;...&#39;</span><span class="p">,</span>
- <span class="s1">&#39;msg_type&#39;</span><span class="p">:</span> <span class="s1">&#39;comm_msg&#39;</span><span class="p">,</span>
- <span class="s1">&#39;parent_header&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;2017-01-21T06:35:24.220789&#39;</span><span class="p">,</span>
-                   <span class="s1">&#39;msg_id&#39;</span><span class="p">:</span> <span class="s1">&#39;...&#39;</span><span class="p">,</span>
-                   <span class="s1">&#39;msg_type&#39;</span><span class="p">:</span> <span class="s1">&#39;comm_msg&#39;</span><span class="p">,</span>
-                   <span class="s1">&#39;session&#39;</span><span class="p">:</span> <span class="s1">&#39;...&#39;</span><span class="p">,</span>
-                   <span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="s1">&#39;username&#39;</span><span class="p">,</span>
-                   <span class="s1">&#39;version&#39;</span><span class="p">:</span> <span class="s1">&#39;5.0&#39;</span><span class="p">}}</span>
-</pre></div>
+size <span class="op">=</span> <span class="dv">10</span> <span class="op">**</span> <span class="dv">7</span>
+data <span class="op">=</span> np.random.normal(size<span class="op">=</span>size)
+<span class="bu">print</span>(<span class="st">&#39;size of array is </span><span class="sc">{}</span><span class="st"> MB&#39;</span>.<span class="bu">format</span>(data.nbytes <span class="op">/</span> <span class="dv">10</span> <span class="op">**</span> <span class="dv">6</span>))
+plt.scatter(np.arange(size), data, s<span class="op">=</span><span class="dv">1</span>)
+plt.show()</code></pre></div>
+<div class="figure">
+<img src="images/interactive-plotting-0.png" alt="Matplotlib interactive plot." />
+<p class="caption">Matplotlib interactive plot.</p>
 </div>
-</div>
-<div class="section" id="conclusion">
-<h2>Conclusion</h2>
-<p>That's it. This approach makes it kind of easy. Matplotlib and Python are
-widely used and visualizing data is essential as I inferred from many
-talks about data science. Interactivity just moves this one step further.</p>
-</div>
-
-</div>
-
-<button id="disqus_button" class="disqus-comment-count" data-disqus-identifier="how-to-interactively-plot-big-data.html">
-    Comments
-</button>
-<div id="disqus_thread"></div>
-
-<!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script id="dsq-count-scr" src="//podondra.disqus.com/count.js"></script>
-<script>
-var disqus_config = function () {
-    this.page.url = 'https://podondra.cz';
-    this.page.identifier = 'how-to-interactively-plot-big-data.html';
-};
-
-$(document).ready(function () {
-    $('#disqus_button').on('click', function () {
-        $.ajax({
-            type: 'GET',
-            url: '//podondra.disqus.com/embed.js',
-            dataType: 'script',
-            cache: true,
-        });
-
-        $(this).hide()
-    });
-});
-</script>
-    </section>
-    <script>
-        renderMathInElement(document.body);
-    </script>
+<h2 id="pros">Pros</h2>
+<p>Jupyter is client-server application. The communication is done over <a href="https://en.wikipedia.org/wiki/WebSocket">WebSocket</a>. This is great in case of Big Data plotting because all the rendering is done server side and the only thing left for a client browser is to display the image. So there is no worry about computational power of a notebook or a web browser.</p>
+<p>Here is a WebSocket frame dumped by Chromium Developer Tools (with some parts strip off). The important part is the base64 encoded image (which is also shorted).</p>
+<pre><code>    {&#39;buffers&#39;: [],
+     &#39;channel&#39;: &#39;iopub&#39;,
+     &#39;content&#39;: {&#39;comm_id&#39;: &#39;...&#39;,
+                 &#39;data&#39;: {&#39;content&#39;: {&#39;data&#39;: &#39;data:image/png;base64,i...C&#39;},
+                          &#39;method&#39;: &#39;custom&#39;}},
+     &#39;header&#39;: {&#39;date&#39;: &#39;2017-01-21T06:35:29.176238&#39;,
+                &#39;msg_id&#39;: &#39;...&#39;,
+                &#39;msg_type&#39;: &#39;comm_msg&#39;,
+                &#39;session&#39;: &#39;...&#39;,
+                &#39;username&#39;: &#39;...&#39;,
+                &#39;version&#39;: &#39;5.0&#39;},
+     &#39;metadata&#39;: {},
+     &#39;msg_id&#39;: &#39;...&#39;,
+     &#39;msg_type&#39;: &#39;comm_msg&#39;,
+     &#39;parent_header&#39;: {&#39;date&#39;: &#39;2017-01-21T06:35:24.220789&#39;,
+                       &#39;msg_id&#39;: &#39;...&#39;,
+                       &#39;msg_type&#39;: &#39;comm_msg&#39;,
+                       &#39;session&#39;: &#39;...&#39;,
+                       &#39;username&#39;: &#39;username&#39;,
+                       &#39;version&#39;: &#39;5.0&#39;}}</code></pre>
+<h2 id="conclusion">Conclusion</h2>
+<p>That's it. This approach makes it kind of easy. Matplotlib and Python are widely used and visualizing data is essential as I inferred from many talks about data science. Interactivity just moves this one step further.</p>
 </body>
 </html>

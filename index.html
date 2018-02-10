@@ -1,155 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>podondra site</title>
-    <meta charset="utf-8">
-    <meta name="author" content="Ondřej Podsztavek">
-    <!-- mobile specific -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-    <link rel="stylesheet" href="https://podondra.cz/theme/css/skeleton.css">
-    <link rel="stylesheet" href="https://podondra.cz/theme/css/pygment.css">
-    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-    <!-- font awesome icons -->
-    <script src="https://use.fontawesome.com/2c3fc9ca95.js"></script>
-    <!-- favicon -->
-    <link rel="icon" type="image/png" href="https://podondra.cz/keyboard.png">
-    <script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-ga('create', 'UA-89944397-1', 'auto');
-ga('send', 'pageview');
-    </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0-alpha2/katex.min.css" integrity="sha384-exe4Ak6B0EoJI0ogGxjJ8rn+RN3ftPnEQrGwX59KTCl5ybGzvHGKjhPKk/KC3abb" crossorigin="anonymous">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0-alpha2/katex.min.js" integrity="sha384-OMvkZ24ANLwviZR2lVq8ujbE/bUO8IR1FdBrKLQBI14Gq5Xp/lksIccGkmKL8m+h" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0-alpha2/contrib/auto-render.min.js" integrity="sha384-cXpztMJlr2xFXyDSIfRWYSMVCXZ9HeGXvzyKTYrn03rsMAlOtIQVzjty5ULbaP8L" crossorigin="anonymous"></script>
-</head>
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Ondřej Podsztavek</title>
+	</head>
+	<body style="max-width: 800px; margin: auto; padding: 10px">
+		<img style="float: right; width: 200px; padding: 10px" src="images/profile.png">
+		<h1>Ondřej Podsztavek</h1>
+		<p><a href="mailto:ondrej.podsztavek@gmail.com">ondrej.podsztavek@gmail.com</a>
+		<p><b>Faculty of Information Technology<br>
+			Czech Technical University in Prague</b>
+		<p>Computer Science student interested in General Artificial
+		Intelligence and Philosophy from Houdkovice, Czechia.
+		<p>
+			<a href="https://github.com/podondra">GitHub</a> |
+			<!-- TODO add CV <a href="podondra-cv.pdf">CV</a> | -->
+			<a href="https://www.linkedin.com/in/podondra">LinkedIn</a> |
+			<a href="https://twitter.com/podondra">Twitter</a>
+		<p>I am a master student at Faculty of Information Technology
+		where I study Knowledge Engineering. I recieved my Bachelor's
+		degree in Computer Science at the same faculty and I graduated
+		with honours.
 
-<body>
-    <header class="container">
-        <h1>podondra site</h1>
-    </header>
-    <nav class="container">
-        <a class="button" href="https://podondra.cz/index.html">
-            <i class="fa fa-folder" aria-hidden="true"></i>
-            index
-        </a>
-        <a class="button" href="https://podondra.cz/categories.html">
-            <i class="fa fa-binoculars" aria-hidden="true"></i>
-            categories
-        </a>
-        <a class="button" href="https://podondra.cz/author/ondrej-podsztavek.html">
-            <i class="fa fa-shower" aria-hidden="true"></i>
-            about me
-        </a>
-        <a class="button" href="https://github.com/podondra">
-            <i class="fa fa-github-alt" aria-hidden="true"></i>
-            github
-        </a>
-    </nav>
-    <section class="container">
-    <article class="row">
-        <header class="six columns">
-            <h5><a href="https://podondra.cz/introduction-to-reinforcement-learning.html"
-                    rel="bookmark"
-                    title="Introduction to Reinforcement Learning">
-                    Introduction to Reinforcement Learning
-            </a></h5>
-        </header>
-        <time class="two columns" datetime="2018-01-04T08:03:00+01:00">
-            04 January 2018
-        </time>
-        <div class="four columns">
-            <p>In this post I would like to introduce reinforcement learning.
-Reinforcement learning is currently producing …</p>
-        </div>
-    </article>
-    <article class="row">
-        <header class="six columns">
-            <h5><a href="https://podondra.cz/deep-q-network-slides.html"
-                    rel="bookmark"
-                    title="Deep Q-network Slides">
-                    Deep Q-network Slides
-            </a></h5>
-        </header>
-        <time class="two columns" datetime="2017-12-15T23:43:00+01:00">
-            15 December 2017
-        </time>
-        <div class="four columns">
-            <p>On 14 December 2017 I talked about Deep Q-network (<a href="https://deepmind.com/research/dqn/" title="DeepMind on DQN">DQN</a>) during
-Let's Talk ML Prague …</p>
-        </div>
-    </article>
-    <article class="row">
-        <header class="six columns">
-            <h5><a href="https://podondra.cz/deep-learning-in-large-astronomical-spectra-archives.html"
-                    rel="bookmark"
-                    title="Deep Learning in Large Astronomical Spectra Archives">
-                    Deep Learning in Large Astronomical Spectra Archives
-            </a></h5>
-        </header>
-        <time class="two columns" datetime="2017-06-27T00:00:00+02:00">
-            27 June 2017
-        </time>
-        <div class="four columns">
-            <p>In this post I would like to introduce my bachelor's thesis.
-I did this work …</p>
-        </div>
-    </article>
-    <article class="row">
-        <header class="six columns">
-            <h5><a href="https://podondra.cz/how-to-embed-google-sheet-chart.html"
-                    rel="bookmark"
-                    title="How to Embed Google Sheet Chart">
-                    How to Embed Google Sheet Chart
-            </a></h5>
-        </header>
-        <time class="two columns" datetime="2017-04-19T00:00:00+02:00">
-            19 April 2017
-        </time>
-        <div class="four columns">
-            <p>In this article I am going to shows how to embed a chart from
-<a class="reference external" href="https://sheets.google.com/">Google …</a></p>
-        </div>
-    </article>
-    <article class="row">
-        <header class="six columns">
-            <h5><a href="https://podondra.cz/the-first-teacher-chinghiz-aitmatov.html"
-                    rel="bookmark"
-                    title="The First Teacher, Chinghiz Aitmatov">
-                    The First Teacher, Chinghiz Aitmatov
-            </a></h5>
-        </header>
-        <time class="two columns" datetime="2017-04-19T00:00:00+02:00">
-            19 April 2017
-        </time>
-        <div class="four columns">
-            <p>The First Teacher (První učitel, 1962) is novel by
-<a class="reference external" href="https://en.wikipedia.org/wiki/Chinghiz_Aitmatov">Chinghiz Aitmatov</a>.
-I found it in …</p>
-        </div>
-    </article>
-    <article class="row">
-        <header class="six columns">
-            <h5><a href="https://podondra.cz/how-to-interactively-plot-big-data.html"
-                    rel="bookmark"
-                    title="How to Interactively Plot Big Data">
-                    How to Interactively Plot Big Data
-            </a></h5>
-        </header>
-        <time class="two columns" datetime="2017-01-21T00:00:00+01:00">
-            21 January 2017
-        </time>
-        <div class="four columns">
-            <p>In this article I'm about to show how to plot interactively Big Data in
-Jupyter …</p>
-        </div>
-    </article>
-    </section>
-    <script>
-        renderMathInElement(document.body);
-    </script>
-</body>
+		<h2>Blog Posts</h2>
+		<p>Here are some post on random topics.
+		<ul>
+			<li><a href="introduction-to-reinforcement-learning.html">
+				Introduction to Reinforcement Learning
+			</a></li>
+			<li><a href="deep-q-network-slides.html">Deep Q-network Slides</a></li>
+			<li><a href="deep-learning-in-large-astronomical-spectra-archives.html">
+				Deep Learning in Large Astronomical Spectra Archives
+			</a></li>
+			<li><a href="how-to-embed-google-sheet-chart.html">
+				How to Embed Google Sheet Chart
+			</a></li>
+			<li><a href="the-first-teacher-chinghiz-aitmatov.html">
+				The First Teacher, Chinghiz Aitmatov
+			</a></li>
+			<li><a href="how-to-interactively-plot-big-data.html">
+				How to Interactively Plot Big Data
+			</a></li>
+		</ul>
+
+		<h2>Publications</h2>
+		<p>Nothing here. Still waiting for my first one.
+	</body>
 </html>
