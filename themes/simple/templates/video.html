@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block head %}
+  {{ super() }}
+  <style>
+    video#bgvid { 
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: -100;
+      -ms-transform: translateX(-50%) translateY(-50%);
+      -moz-transform: translateX(-50%) translateY(-50%);
+      -webkit-transform: translateX(-50%) translateY(-50%);
+      transform: translateX(-50%) translateY(-50%);
+      background-size: cover; 
+      }
+      .center {
+          margin: auto;
+          width: 25%;
+          text-align: center;
+      }
+  </style>
+{% endblock head %}
+{% block content %}
+  <video playsinline autoplay muted loop poster="" id="bgvid">
+    <source src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/videos/lightning.mp4" type="video/mp4">
+  </video>
+  <nav class="center">
+    <h1>podondra site</h1>
+    <p><a href="{{ SITEURL }}/author.html">about</a>
+    <p><a href="{{ SITEURL }}/blog_index.html">articles</a>
+    <p><a href="{{ SITEURL }}/author.html">categories</a>
+    <p><a href="https://github.com/podondra">github</a>
+  </nav>
+{% endblock %}

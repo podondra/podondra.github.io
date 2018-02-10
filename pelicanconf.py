@@ -1,13 +1,14 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*- #
+from __future__ import unicode_literals
 
 AUTHOR = 'Ondřej Podsztavek'
 SITENAME = 'podondra site'
-SITESUBTITLE = 'just a computer science student\'s essays'
 SITEURL = ''
 
 PATH = 'content'
 
-TIMEZONE = 'Europe/Prague'
+TIMEZONE = 'Europe/Paris'
 
 DEFAULT_LANG = 'en'
 
@@ -18,14 +19,20 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
-# My new stuff
-THEME = 'theme'
-DIRECT_TEMPLATES = ['index', 'categories']
-STATIC_PATHS = ['images', 'slides', 'extra', '../README.rst']
-EXTRA_PATH_METADATA = {
-        'extra/keyboard.png': {'path': 'keyboard.png'},
-        'extra/CNAME': {'path': 'CNAME'},
-        '../README.rst': {'path': 'README.rst' },
-        }
-DEFAULT_DATE = 'fs'
-SUMMARY_MAX_LENGTH = 15
+# Blogroll
+LINKS = (('Pelican', 'http://getpelican.com/'),
+         ('Python.org', 'http://python.org/'),
+         ('Jinja2', 'http://jinja.pocoo.org/'),
+         ('You can modify those links in your config file', '#'),)
+
+# Social widget
+SOCIAL = (('You can add links in your config file', '#'),
+          ('Another social link', '#'),)
+
+DEFAULT_PAGINATION = False
+
+# Uncomment following line if you want document-relative URLs when developing
+#RELATIVE_URLS = True
+
+THEME = 'themes/simple'
+INDEX_SAVE_AS = 'blog_index.html'
