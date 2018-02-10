@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>
+How to Interactively Plot Big Data
+</title>
+</head>
+<body>
+<h1 id="how-to-interactively-plot-big-data">How to Interactively Plot Big Data</h1>
+<p>Published on 21st January 2017.</p>
+<p>In this article I'm about to show how to plot interactively Big Data in Jupyter using Matplotlib. Data visualization is essential to data science. Interactivity helps to get rid of outliers or to focus on specific parts of data.</p>
+<h2 id="nbagg">Nbagg</h2>
+<p>Interactive matplotlib figures are available in Jupyter (IPython) notebook from <a href="https://pelson.github.io/2014/nbagg_backend/">version 1.4</a>. There is an interactive backend called <a href="http://matplotlib.org/1.4.3/users/whats_new.html#the-nbagg-backend%3E">nbagg</a>. Just call this magic command and import matplotlib in your notebook:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="op">%</span>matplotlib nbagg
+<span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</code></pre></div>
+<h2 id="ipympl">Ipympl</h2>
+<p>Jupyter plugin <a href="https://github.com/matplotlib/jupyter-matplotlib%3E">ipympl</a> has been created to &quot;<em>... separate developement of the Jupyter integration (future versions of notebook and Jupyter Lab) from the calendar of the releases of the main matplotlib repository.</em>&quot;. This plugin requires matplotlib v2.0.0. But it seem inactive nowadays.</p>
+<h2 id="installation">Installation</h2>
+<p>I recommend to create an virtual environment.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="ex">virtualenv</span> -p python3 venv
+$ <span class="bu">source</span> venv/bin/activate</code></pre></div>
+<p>Then install the ipympl plugin and enable it (it will automatically install jupyter, matplotlib and itself).</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="ex">pip</span> install ipympl
+$ <span class="ex">jupyter</span> nbextension enable --py --sys-prefix ipympl</code></pre></div>
+<p>Sometimes it is also required to enable Javascript widget.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="ex">jupyter</span> nbextension enable --py --sys-prefix widgetsnbextension</code></pre></div>
+<h2 id="plotting">Plotting</h2>
+<p>In interactive mode matplotlib will plot a graph with this set of buttons.</p>
+<ul>
+<li>reset original view</li>
+<li>back to previous view</li>
+<li>forward to next view</li>
+<li>pan axes with left mouse, zoom with right</li>
+<li>zoom to rectangle</li>
+<li>download plot</li>
+<li>export plot</li>
+</ul>
+<p>Features are obvious from the button names. The rectangle zoom is really great as you can easily choose the important part of your data. If there is need to rescale a axes it is easy with the pan axes feature. When the view is ready 'download plot' button will download the image or 'export plot' button can save it into Jupyter notebook.</p>
+<p>Here is a short example with 80 MB.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="op">%</span>matplotlib nbagg
+<span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt
+<span class="im">import</span> numpy <span class="im">as</span> np
+
+size <span class="op">=</span> <span class="dv">10</span> <span class="op">**</span> <span class="dv">7</span>
+data <span class="op">=</span> np.random.normal(size<span class="op">=</span>size)
+<span class="bu">print</span>(<span class="st">&#39;size of array is </span><span class="sc">{}</span><span class="st"> MB&#39;</span>.<span class="bu">format</span>(data.nbytes <span class="op">/</span> <span class="dv">10</span> <span class="op">**</span> <span class="dv">6</span>))
+plt.scatter(np.arange(size), data, s<span class="op">=</span><span class="dv">1</span>)
+plt.show()</code></pre></div>
+<div class="figure">
+<img src="images/interactive-plotting-0.png" alt="Matplotlib interactive plot." />
+<p class="caption">Matplotlib interactive plot.</p>
+</div>
+<h2 id="pros">Pros</h2>
+<p>Jupyter is client-server application. The communication is done over <a href="https://en.wikipedia.org/wiki/WebSocket">WebSocket</a>. This is great in case of Big Data plotting because all the rendering is done server side and the only thing left for a client browser is to display the image. So there is no worry about computational power of a notebook or a web browser.</p>
+<p>Here is a WebSocket frame dumped by Chromium Developer Tools (with some parts strip off). The important part is the base64 encoded image (which is also shorted).</p>
+<pre><code>    {&#39;buffers&#39;: [],
+     &#39;channel&#39;: &#39;iopub&#39;,
+     &#39;content&#39;: {&#39;comm_id&#39;: &#39;...&#39;,
+                 &#39;data&#39;: {&#39;content&#39;: {&#39;data&#39;: &#39;data:image/png;base64,i...C&#39;},
+                          &#39;method&#39;: &#39;custom&#39;}},
+     &#39;header&#39;: {&#39;date&#39;: &#39;2017-01-21T06:35:29.176238&#39;,
+                &#39;msg_id&#39;: &#39;...&#39;,
+                &#39;msg_type&#39;: &#39;comm_msg&#39;,
+                &#39;session&#39;: &#39;...&#39;,
+                &#39;username&#39;: &#39;...&#39;,
+                &#39;version&#39;: &#39;5.0&#39;},
+     &#39;metadata&#39;: {},
+     &#39;msg_id&#39;: &#39;...&#39;,
+     &#39;msg_type&#39;: &#39;comm_msg&#39;,
+     &#39;parent_header&#39;: {&#39;date&#39;: &#39;2017-01-21T06:35:24.220789&#39;,
+                       &#39;msg_id&#39;: &#39;...&#39;,
+                       &#39;msg_type&#39;: &#39;comm_msg&#39;,
+                       &#39;session&#39;: &#39;...&#39;,
+                       &#39;username&#39;: &#39;username&#39;,
+                       &#39;version&#39;: &#39;5.0&#39;}}</code></pre>
+<h2 id="conclusion">Conclusion</h2>
+<p>That's it. This approach makes it kind of easy. Matplotlib and Python are widely used and visualizing data is essential as I inferred from many talks about data science. Interactivity just moves this one step further.</p>
+</body>
+</html>

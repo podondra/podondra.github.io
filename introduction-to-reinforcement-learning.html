@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>
+Introduction to Reinforcement Learning
+</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0-alpha2/katex.min.css" integrity="sha384-exe4Ak6B0EoJI0ogGxjJ8rn+RN3ftPnEQrGwX59KTCl5ybGzvHGKjhPKk/KC3abb" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0-alpha2/katex.min.js" integrity="sha384-OMvkZ24ANLwviZR2lVq8ujbE/bUO8IR1FdBrKLQBI14Gq5Xp/lksIccGkmKL8m+h" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0-alpha2/contrib/auto-render.min.js" integrity="sha384-cXpztMJlr2xFXyDSIfRWYSMVCXZ9HeGXvzyKTYrn03rsMAlOtIQVzjty5ULbaP8L" crossorigin="anonymous"></script>
+</head>
+<body>
+<h1 id="introduction-to-reinforcement-learning">Introduction to Reinforcement Learning</h1>
+<p>Published on 9th February 2018.</p>
+<p>In this post I would like to introduce reinforcement learning. Reinforcement learning is currently producing exciting results (see <a href="https://openai.com/" title="OpenAI">OpenAI</a> and <a href="https://deepmind.com/" title="DeepMind">DeepMind</a>) and in my opinion would lead to general artificial intelligence.</p>
+<p>I also implemented some algorithms in Python Please see my <a href="https://github.com/podondra/gym-rl">gym-rl GitHub repository</a>. I encourage you to also implement them while reading this post, <a href="http://incompleteideas.net/book/the-book-2nd.html" title="Sutton and Barto, Reinforcement Learning: An Introduction">the book</a> and <a href="http://www0.cs.ucl.ac.uk/staff/d.silver/web/Teaching.html">UCL reinforcement learning course</a> by David Silver.</p>
+<h2 id="introduction">Introduction</h2>
+<p>Reinforcement learning is a branch of machine learning. It is concerned with taking sequences of actions. From all forms of machine learning it is the closest to the humans' learning. Reinforcement learning is learning what to do so as to maximize cumulative reward. Usually described in terms of agent interacting with previously unknown environment.</p>
+<p>Here are some reinforcement learning characteristics:</p>
+<ul>
+<li>trial-and-error search,</li>
+<li>no supervisor, only reward signal,</li>
+<li>delayed reward,</li>
+<li>time matter, sequential non-i.i.d. data, and</li>
+<li>agent's actions affect the received data.</li>
+</ul>
+<p>A learning agent interacts over time with an environment to achieve a goal. The agent observes the environment's state (robot's camera images and its joint angles). Takes actions (joint torques) that affect the state. Gets rewards (for staying balanced, navigate to target location and so on).</p>
+<p>Moreover reinforcement learning is very fascinating field as it has many faces. It is in intersection of:</p>
+<ul>
+<li>computer science (machine learning),</li>
+<li>neuroscience (reward system),</li>
+<li>psychology,</li>
+<li>economics,</li>
+<li>mathematics and</li>
+<li>engineering (optimal control).</li>
+</ul>
+<h3 id="basic-concepts">Basic Concepts</h3>
+<p>Policy, reward, value function and model of an environment are four main elements of a reinforcement learning.</p>
+<p>A <em>policy</em> is a mapping from perceived states to actions. Agent's behavior function. Can be defined as deterministic policy \(a = \pi(s)\) or stochastic policy \(\mathbb{P}(A_t = a | S_t = s) = \pi(a | s)\).</p>
+<p>A <em>reward</em> \(R_t\) defines the goal in a reinforcement learning problem. It is a scalar feedback signal sent to an agent by an environment at every time step \(t\). The agent's objective is to maximize the total reward over the long run. Reinforcement learning is based on the <em>reward hypothesis</em>:</p>
+<blockquote>
+<p>All goals can be described by the maximization of expected cumulative reward.</p>
+</blockquote>
+<p>On contrary to reward <em>value function</em> specifies what is good in the long run. It is used to evaluate goodness of states. What an agent can expect to accumulate from a state over the future.</p>
+<p>The last element is <em>a model of an environment</em>. It mimics the behavior of an environment or allows inferences about its dynamics. It is used for estimating future situations before they are actually experienced.</p>
+<h3 id="approaches-to-reinforcement-learning">Approaches to Reinforcement Learning</h3>
+<p>There are different approaches to reinforcement learning. The two different strategies are to either optimize policy or work with value functions. Policy optimization includes evolutionary methods and policy gradients. Value function methods includes dynamic programming, Monte Carlo methods, temporal-difference learning and function approximation. It their intersection are actor-critic methods.</p>
+<h2 id="markov-decision-processes">Markov Decision Processes</h2>
+<p>Markov decision processes formally describe environments for reinforcement learning. They are mathematically idealized from of reinforcement learning problems. Key elements are returns, value functions and Bellman equations.</p>
+<p>In an MDP a learner is an <em>agent</em> interacting with an <em>environment</em>. Agent and environment interact at discrete time steps \(t = 0, 1, 2, \dots\). The agent selects and action \(A_t \in \mathcal{A(s)}\) and the environment responses with a reward \(R_{t + 1} \in \mathbb{R}\) and a next state \(S_{t + 1} \in \mathcal{S}\) and so forth. This loop can be unrolled into a <em>trajectory</em>:</p>
+<p>\[S_0, A_0, R_1, S_1, A_1, R_2, S_2, A_2, R_3, \dots\]</p>
+<p>MDP defines a probability of occurrence for \(s' \in \mathcal{S}\) and \(r \in \mathcal{R}\) at time \(t\) given preceding state and action:</p>
+<p>\[p(s', r | s, a) \equiv \mathbb{P}(S_t = s', R_t = r | S_{t - 1} = s, A_{t - 1} = a),\]</p>
+<p>for all \(s', s \in \mathcal{S}\), \(r \in \mathcal{R}\) and \(a \in \mathcal{A}(s)\). The function \(p: \mathcal{S} \times \mathbb{R} \times \mathcal{S} \times \mathcal{A} \to [0, 1]\) is ordinary deterministic function of four arguments. The probabilities given by the function \(p\) completely characterize the dynamics of an MDP.</p>
+<p>The agent's goal is to maximize <em>expected return</em>, the total amount of reward \(R_t\):</p>
+<p>\[G_t \equiv \sum_{k = t + 1}^T \gamma^{k - t - 1} R_k,\]</p>
+<p>where \(\gamma \in (0, 1]\) is an discount rate and \(T\) is time horizon which might be infinity but then \(\gamma \neq 1\) else the sum will not be finite. This is necessary due to distinction between continuing and episodic tasks.</p>
+<p>Consider a game of Go. An agent might get a reward of -1 for losing the game and 1 for winning the game. The agent always learns to maximize its reward so it is important to provide reward in such way that the agent when maximizing its reward will also achieve goal given. The reward signal is not the place to impart <em>how</em> the agent such achieve something but rather <em>what</em> to achieve. For example there such be no rewards during the game of Go for some intermediate accomplishments as the agent might learn to achieve these subgoals without learning to win the game.</p>
+<h3 id="policies-and-value-functions">Policies and Value Functions</h3>
+<p>Most of basic reinforcement learning algorithms involve a notion of value functions. They define the notion of how a state or a pair of state and action is good in terms of future rewards that can be expected. The value of a state is denoted \(v_{\pi}(s)\), called <em>state-value function for policy</em> \(\pi\) and for MPDs is formally:</p>
+<p>\[v_{\pi}(s) \equiv \mathbb{E}_{\pi}(G_t | S_t = s).\]</p>
+<p>Similarly is defined the value of taking action in state which is called <em>action-value function for policy</em> \(\pi\):</p>
+<p>\[q_{\pi}(s, a) \equiv \mathbb{E}_{\pi}(G_t | S_t = s, A_t = a).\]</p>
+<p>A fundamental property of value functions is that they satisfy recursive relationships called <em>Bellman equations</em>. For example the Bellman equation of state-value function:</p>
+<p>\[v_{\pi}(s) \equiv \mathbb{E}_{}(R_{t + 1} + \gamma v_{\pi}(S_{t + 1}) | S_t = s).\]</p>
+<p>Solving a reinforcement learning problem is roughly finding a policy that get a lot of long run reward. An <em>optimal policy</em> is a policy which has the <em>optimal state-value function</em> \(v_*\):</p>
+<p>\[v_*(s) \equiv \max_{\pi} v_{\pi}(s).\]</p>
+<p>The optimal policy also has the <em>optimal action-value function</em>:</p>
+<p>\[q_*(s, a) \equiv \max_{\pi} q_{\pi}(s, a).\]</p>
+<p>Having one of these functions makes determining optimal policy easy as always action that maximizes the future reward is selected. This policy is called <em>greedy</em> with respect to the optimal value function.</p>
+<h2 id="dynamic-programming">Dynamic Programming</h2>
+<p>Dynamic programming refers to collection of algorithms used for computing optimal policies when a perfect model of the environment is given as an MDP. These algorithms are limited by their assumptions that the MDP is fully known. Their are very important as other algorithm might be viewed as attempting the same effect as dynamic programming but more effectively and without full knowledge of the environment.</p>
+<p>The main idea of dynamic programming is to use value functions to structure the search for good policies via <em>Bellman optimality equations</em>:</p>
+<p>\[v_*(s) = \max_a \sum_{s', r} p(s', r | s, a) \big[r + \gamma v_*(s')\big]\]</p>
+<p>or</p>
+<p>\[q_*(s, a) = \sum_{s', r} p(s', r | s, a) \big[r + \gamma \max_{a'} q_*(s', a')\big],\]</p>
+<p>for all \(s, s' \in \mathcal{S}\) and \(a \in \mathcal{A}(s)\). Dynamic programming makes these equations into iterative update rules for improving approximations of the desired value functions.</p>
+<h3 id="policy-evaluation">Policy Evaluation</h3>
+<p>Consider how to compute state-value function \(v_{\pi}\) for a given policy \(\). Having a sequence of approximate value function \(v_0, v_1, v_2, \dots\) each mapping \(\mathcal{S} \mathbb{R}\). The first approximation \(v_0\) is chosen arbitrarily. Only the terminal state must have value 0. Then each next approximation is obtained by using the Bellman equation for \(v_{\pi}\) as an update rule:</p>
+<p>\[v_{k + 1}(s) = \max_a _{s', r} p(s', r | s, a) \big[r + \gamma v_{k}(s')\big],\]</p>
+<p>for all \(s \in \mathcal{S}\). In general the sequence \(\{v_k\}_{k = 0}^{\infty}\) can be shown to converge to \(v_{\pi}\). This algorithm is called <em>iterative policy evaluation</em>:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> policy_evaluation(policy, env, gamma<span class="op">=</span><span class="fl">1.0</span>, epsilon<span class="op">=</span><span class="fl">1e-5</span>):
+    <span class="co">&quot;&quot;&quot;Policy evaluation algorithm.</span>
+
+<span class="co">    Compute state-value function of given policy.</span>
+
+<span class="co">    policy is the policy to by evaluated in form of transition matrix.</span>
+<span class="co">    env is a OpenAI gym environment transition dynamics as attribute P.</span>
+<span class="co">    gamma is a discount rate.</span>
+<span class="co">    epsilon is a threshold determining accuracy of estimation.</span>
+<span class="co">    &quot;&quot;&quot;</span>
+    <span class="co"># initialize state-value function arbitrarily</span>
+    V <span class="op">=</span> numpy.zeros(env.observation_space.n)
+    <span class="co"># while insufficient accuracy defined by threshold</span>
+    <span class="cf">while</span> <span class="va">True</span>:
+        delta <span class="op">=</span> <span class="dv">0</span>
+        <span class="cf">for</span> s <span class="kw">in</span> <span class="bu">range</span>(env.observation_space.n):
+            <span class="co"># apply update given by Bellman equation</span>
+            v <span class="op">=</span> V[s]
+            acc <span class="op">=</span> <span class="dv">0</span>
+            <span class="cf">for</span> a <span class="kw">in</span> <span class="bu">range</span>(env.action_space.n):
+                acc <span class="op">+=</span> policy[s, a] <span class="op">*</span> (env.P[a, s] <span class="op">@</span> (env.R[a, s] <span class="op">+</span> gamma <span class="op">*</span> V))
+            V[s] <span class="op">=</span> acc
+            <span class="co"># store biggest inaccuracy</span>
+            delta <span class="op">=</span> <span class="bu">max</span>(delta, numpy.<span class="bu">abs</span>(v <span class="op">-</span> V[s]))
+        <span class="cf">if</span> delta <span class="op">&lt;</span> epsilon:
+            <span class="cf">return</span> V</code></pre></div>
+<p>When implementing the algorithm a usual way would be to use two arrays, one for old values \(v_k(s)\), one for new values \(v_{k + 1}(s)\) and the new values would be computed base on the old values. But it is easier to implement it as in-place procedure with only one array which also converges to \(v_{\pi}\) and usually converges faster because it has more recent data available sooner.</p>
+<h3 id="policy-improvement">Policy Improvement</h3>
+<p>The state-value function computed by the policy evaluation algorithm can be used to find better policies. New better <em>greedy</em> policy is determined by</p>
+<p>\['(s) \equiv \operatorname{argmax}_a q_\pi(s, a) = \operatorname{argmax}_a \mathbb{E}(R_{t + 1} + \gamma v_\pi(S_{t + 1}) | S_t = s, A_t = a).\]</p>
+<p>The greedy policy takes action that looks best after one step of look ahead. By constructing the new policy in this way it will be always better or as good as the old policy. This algorithm is known as <em>policy improvement</em>:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> policy_improvement(env, V, gamma<span class="op">=</span><span class="fl">1.0</span>):
+    <span class="co">&quot;&quot;&quot;Policy improvement algorithm.</span>
+
+<span class="co">    Return transition matrix of policy given by state-value function V.</span>
+
+<span class="co">    env is a OpenAI gym environment transition dynamics as attribute P.</span>
+<span class="co">    V is numpy array of state-values.</span>
+<span class="co">    gamma is a discount rate.</span>
+<span class="co">    &quot;&quot;&quot;</span>
+    <span class="co"># construct empty transition matrix</span>
+    policy <span class="op">=</span> numpy.zeros((env.observation_space.n, env.action_space.n))
+    <span class="cf">for</span> s <span class="kw">in</span> <span class="bu">range</span>(env.observation_space.n):
+        <span class="co"># for each state construct state-action value</span>
+        action_values <span class="op">=</span> numpy.zeros(env.action_space.n)
+        <span class="cf">for</span> a <span class="kw">in</span> <span class="bu">range</span>(env.action_space.n):
+            action_values[a] <span class="op">=</span> env.P[a, s] <span class="op">@</span> (env.R[a, s] <span class="op">+</span> gamma <span class="op">*</span> V)
+        <span class="co"># choose the best action</span>
+        a <span class="op">=</span> numpy.argmax(action_values)
+        <span class="co"># set probability 1 for that action</span>
+        policy[s, a] <span class="op">=</span> <span class="fl">1.0</span>
+    <span class="cf">return</span> policy</code></pre></div>
+<h3 id="policy-iteration">Policy Iteration</h3>
+<p>Previous sections show how to improve a policy a how to compute its value function. This process can be repeated. Each policy is guaranteed to be strict improvement unless it is already optimal. This algorithm is called <em>policy iteration</em>:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> policy_iteration(env, gamma<span class="op">=</span><span class="fl">1.0</span>):
+    <span class="co">&quot;&quot;&quot;Policy iteration algorithm.</span>
+
+<span class="co">    Return optimal policy and optimal state-value function for given MDP.</span>
+
+<span class="co">    env is a OpenAI gym environment transition dynamics as attribute P.</span>
+<span class="co">    gamma is a discount rate.</span>
+<span class="co">    &quot;&quot;&quot;</span>
+    <span class="co"># start with uniform random policy</span>
+    policy <span class="op">=</span> numpy.ones((env.observation_space.n, env.action_space.n))
+    policy <span class="op">/=</span> env.action_space.n
+    <span class="cf">while</span> <span class="va">True</span>:
+        <span class="co"># evaluate policy</span>
+        V <span class="op">=</span> policy_evaluation(policy, env, gamma)
+        <span class="co"># greedily improve policy</span>
+        policy_prime <span class="op">=</span> policy_improvement(env, V, gamma)
+        <span class="co"># check if optimal</span>
+        <span class="cf">if</span> (policy <span class="op">==</span> policy_prime).<span class="bu">all</span>():
+            <span class="cf">return</span> policy, V
+        policy <span class="op">=</span> policy_prime</code></pre></div>
+<h3 id="value-iteration">Value Iteration</h3>
+<p>Last method in scope of dynamic programming is value iteration which address drawback of policy iteration that has to carried out all iterations of policy evaluation. It uses policy evaluation which stops after one sweep:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> value_iteration(env, gamma<span class="op">=</span><span class="fl">1.0</span>, epsilon<span class="op">=</span><span class="fl">1e-5</span>):
+    <span class="co">&quot;&quot;&quot;Value iteration algorithm</span>
+
+<span class="co">    Return optimal policy and optimal state-value function for given MDP.</span>
+
+<span class="co">    env is a OpenAI gym environment transition dynamics as attribute P.</span>
+<span class="co">    gamma is a discount rate.</span>
+<span class="co">    &quot;&quot;&quot;</span>
+    <span class="co"># arbitrary initialization</span>
+    V <span class="op">=</span> numpy.zeros(env.observation_space.n)
+    <span class="cf">while</span> <span class="va">True</span>:
+        v <span class="op">=</span> numpy.copy(V)
+        <span class="co"># improve value function</span>
+        V <span class="op">=</span> numpy.<span class="bu">max</span>(env.R <span class="op">+</span> (gamma <span class="op">*</span> env.P <span class="op">@</span> V), axis<span class="op">=</span><span class="dv">0</span>)
+        delta <span class="op">=</span> numpy.<span class="bu">max</span>(numpy.<span class="bu">abs</span>(v <span class="op">-</span> V))
+        <span class="co"># check termination condition</span>
+        <span class="cf">if</span> delta <span class="op">&lt;</span> epsilon:
+            <span class="cf">break</span>
+    <span class="co"># compute policy and return </span>
+    <span class="cf">return</span> policy_improvement(env, V, gamma), V</code></pre></div>
+<h2 id="monte-carlo-methods">Monte Carlo Methods</h2>
+<p>Monte Carlo methods learn value function from experience from sample episodes. Thus there is no need for full knowledge of an environment as in dynamic programming. Monte Carlo methods are based on sampling episodes and at the end of each episode they make update to value function according to estimate from that episode. In this is one drawback of these methods that they are high variance due to lot of randomness within an episode but they are not biased.</p>
+<p>There are Monte Carlo algorithms for policy evaluation and control. But I would not go into details of that still the code is available in the <a href="https://github.com/podondra/gym-rl">gym-rl</a> repository Let's move on to temporal-difference learning from which there is only small step towards more complicated methods for large problems.</p>
+<h2 id="temporal-difference-learning">Temporal-Difference Learning</h2>
+<p>Temporal-difference learning is combination of Monte Carlo methods and dynamic programming. It is <em>model-free</em> and it <em>bootstraps</em> which means that it estimates value function based on other estimates. This allows it to be online and fully incremental because it samples and performs update on every time step.</p>
+<p>Temporal-difference prediction is base on equation:</p>
+<p>\[V(S_t) \gets V(S_t) + \alpha (R_{t + 1} + V(S_{t + 1}) - V(S_t)),\]</p>
+<p>where the term \(\delta_t = R_{t + 1} + V(S_{t + 1}) - V(S_t)\) is called TD-error.</p>
+<h3 id="sarsa">Sarsa</h3>
+<p>Sarsa is <em>on-policy</em> temporal-difference control method. It learns action-value function \(q_\pi(s, a)\) for current behavior policy \(\pi\). Therefore it rather uses this action-value equation:</p>
+<p>\[Q(S_t, A_t) \gets Q(S_t, A_t) + \alpha (R_{t + 1} + \gamma Q(S_{t + 1}, A_{t + 1}) - Q(S_t, A_t)).\]</p>
+<p>This update is done after every transition and it uses tuple \(S_t, A_t, R_{t + 1}, S_{t + 1}, A_{t + 1}\) which gives it the name Sarsa:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> sarsa(env, n_episodes, gamma<span class="op">=</span><span class="fl">1.0</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, epsilon<span class="op">=</span><span class="fl">0.1</span>):
+    <span class="co">&quot;&quot;&quot;Sarsa algorithm.</span>
+
+<span class="co">    Return action-value function for optimal epsilon-greedy policy for an</span>
+<span class="co">    environment.</span>
+
+<span class="co">    env is an OpenAI gym environment.</span>
+<span class="co">    n_episodes is number of episodes to run.</span>
+<span class="co">    gamma is an discount factor.</span>
+<span class="co">    alpha is an learning rate.</span>
+<span class="co">    epsilon is probability of selecting random action.</span>
+<span class="co">    &quot;&quot;&quot;</span>
+    <span class="co"># rather than store Q as table use dictionary (default value is 0)</span>
+    Q <span class="op">=</span> defaultdict(<span class="bu">float</span>)
+    <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(n_episodes):
+        <span class="co"># reset environment</span>
+        S <span class="op">=</span> env.reset()
+        <span class="co"># choose epsilon-greedy action with respect to Q</span>
+        A <span class="op">=</span> epsilon_greedy_policy(env, S, Q, epsilon)
+        <span class="cf">while</span> <span class="va">True</span>:
+            S_prime, R, done, _ <span class="op">=</span> env.step(A)
+            A_prime <span class="op">=</span> epsilon_greedy_policy(env, S_prime, Q, epsilon)
+            <span class="co"># temporal-difference update</span>
+            Q[S, A] <span class="op">+=</span> alpha <span class="op">*</span> (R <span class="op">+</span> gamma <span class="op">*</span> Q[S_prime, A_prime] <span class="op">-</span> Q[S, A])
+            S, A <span class="op">=</span> S_prime, A_prime
+            <span class="cf">if</span> done:
+                <span class="cf">break</span>
+    <span class="cf">return</span> Q</code></pre></div>
+<p>where <code>epsilon_greedy_policy</code> is function which with probability <code>epsilon</code> selects a random action else selects a greedy action. This is needed to assure exploration of whole state space.</p>
+<h3 id="q-learning">Q-learning</h3>
+<p>On the other hand Q-learning is <em>off-policy</em> temporal-difference control algorithm defined by:</p>
+<p>\[Q(S_t, A_t) \gets Q(S_t, A_t) + \alpha (R_{t + 1} + \gamma \max_a Q(S_{t + 1}, a) - Q(S_t, A_t)).\]</p>
+<p>Therefore the learned action-value function \(Q\) directly approximates \(q_*\) independent of policy that is followed. The policy that is followed only has to explore the whole space. This has been proved to converge by <a href="http://www.cs.rhul.ac.uk/%7Echrisw/thesis.html">Watkins</a> in 1989.</p>
+<p>Q-learning algorithm is very similar to Sarsa:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> q_learning(env, n_episodes, gamma<span class="op">=</span><span class="fl">1.0</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, epsilon<span class="op">=</span><span class="fl">0.1</span>):
+    <span class="co">&quot;&quot;&quot;Q-learning algorithm.</span>
+
+<span class="co">    Return optimal action value function Q. It is off-policy</span>
+<span class="co">    temporal-difference method.</span>
+
+<span class="co">    env is an OpenAI gym environment.</span>
+<span class="co">    n_episodes is number of episodes to run.</span>
+<span class="co">    gamma is an discount factor.</span>
+<span class="co">    alpha is an learning rate.</span>
+<span class="co">    epsilon is probability of selecting random action.</span>
+<span class="co">    &quot;&quot;&quot;</span>
+    <span class="co"># rather than store Q as table use dictionary (default value is 0)</span>
+    Q <span class="op">=</span> defaultdict(<span class="bu">float</span>)
+    <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(n_episodes):
+        S <span class="op">=</span> env.reset()
+        <span class="cf">while</span> <span class="va">True</span>:
+            <span class="co"># select epsilon-greedy action</span>
+            A <span class="op">=</span> epsilon_greedy_policy(env, S, Q, epsilon)
+            S_prime, R, done, _ <span class="op">=</span> env.step(A)
+            <span class="co"># Q update</span>
+            max_Q <span class="op">=</span> numpy.<span class="bu">max</span>([Q[S_prime, A] <span class="cf">for</span> A <span class="kw">in</span> <span class="bu">range</span>(env.action_space.n)])
+            Q[S, A] <span class="op">+=</span> alpha <span class="op">*</span> (R <span class="op">+</span> gamma <span class="op">*</span> max_Q <span class="op">-</span> Q[S, A])
+            S <span class="op">=</span> S_prime
+            <span class="cf">if</span> done:
+                <span class="cf">break</span>
+    <span class="cf">return</span> Q</code></pre></div>
+<h2 id="approximate-solution-methods">Approximate Solution Methods</h2>
+<p>In this post only tabular methods are discussed. Methods were the value function can be represented as matrices. But there is large area of approximate solution methods that scale up to large or continuous state spaces. These methods mainly include value-function approximation and policy gradient methods.</p>
+<p>Furthermore there is so called deep reinforcement learning which is branch of field using non-linear function approximators. Usually updating parameters with stochastic gradient descent. Deep reinforcement learning has achieved remarkable successes as <a href="https://deepmind.com/research/dqn/">playing Atari 2600 games</a>, <a href="https://deepmind.com/research/publications/mastering-game-go-without-human-knowledge/">mastering Go</a> or <a href="https://deepmind.com/blog/impala-scalable-distributed-deeprl-dmlab-30/">training an agent on many tasks</a>.</p>
+<p>Material to get into these areas are in the references.</p>
+<h2 id="exploration-and-exploitation">Exploration and Exploitation</h2>
+<p>This section is going to introduce one central problem of reinforcement learning. The need to balance exploration and exploitation is big challenge in reinforcement learning. Actions whose estimated value is greatest are called <em>greedy</em> actions. Selecting one of these actions is <em>exploiting</em> current knowledge of the values of the actions. If a non-greedy action is selected than an agent is <em>exploring</em> cause it enables to improve estimate of the non-greedy action. Exploitation maximize the expected reward one step and exploration may produce greater total reward. It is impossible to explore and exploit with any single action selection so this is referred as <em>conflict</em> between exploration and exploitation.</p>
+<h3 id="a-k-armed-bandit-problem">A \(k\)-armed Bandit Problem</h3>
+<p>The \(k\)-armed bandit problem is named by analogy to <a href="https://en.wikipedia.org/wiki/Slot_machine" title="Slot Machine">slot machine</a> and it is well suited to demonstrate the exploitation and exploration problem. An agent is repeatedly faced with a choice among \(k\) different actions in <em>non-associative</em>, <em>stationary</em> setting (action taken only in one situation). After each choice it receive a numerical reward from a stationary probability distribution. The objective is to maximize the expected total reward over some <em>time steps</em>.</p>
+<p>In the \(k\)-armed bandit problem each of the \(k\) actions has an expected reward given that the action is selected (action's value). The action selected at time step \(t\) is denoted as \(A_t\) and its reward as \(R_t\). The value of an arbitrary action \(a\) is the expected reward given that \(a\) is selected:</p>
+<p>\[q_*(a) \equiv \mathbb{E}(R_t | A_t = a).\]</p>
+<p>If the value of each function was known it would be trivial to solve the \(k\)-armed bandit problem. But their are not certainly known although there might be estimates. The estimated value of action \(a\) at time step \(t\) is \(Q_t(a)\) and it should be as close as possible to \(q_*(a)\).</p>
+<h3 id="action-value-methods">Action-value Methods</h3>
+<p>The true value of an action it the mean reward so natural way to estimate is by averaging received rewards:</p>
+<p>\[Q_t(a) \equiv \frac{\sum^{t - 1}_{i = 1} R_i \cdot 1_{A_i = a}} {\sum^{t - 1}_{i = 1} 1_{A_i = a}},\]</p>
+<p>where \(\mathbb{1}_{\text{condition}}\) is random variable indicator that is \(1\) if condition is true else \(0\). If the denominator is \(0\) then \(Q_t(a)\) is defined as a default value (for example \(0\)). Moreover if the denominator goes to infinity then \(Q_t(a)\) converges to \(q_*(a)\). This way of estimating action values is called <em>sample-average</em>.</p>
+<p>The simplest action selection rule based on sample-average is to select the action with highest estimated value (greedy action):</p>
+<p>\[A_t \equiv \operatorname{argmax}_a Q_t(a).\]</p>
+<p>Greedy action selection always exploit current knowledge to maximize immediate reward and spends no time exploring. Simple modification is with probability \(\varepsilon\) select instead randomly any action with equal probability independently of the action-value estimates. These which use near-greedy action selection rule are called \(\varepsilon\)<em>-greedy</em> methods. Advantage of these methods is in limit every action will be sampled an infinite number of times thus all \(Q_t(a)\) converge to \(q_*(a)\).</p>
+<h3 id="incremental-implementation">Incremental Implementation</h3>
+<p>Sample average action value methods can be computed with constant memory and constant per-time-step computation. Let \(R_i\) be the reward received after the \(i\)th selection <em>of this action</em> and \(Q_n\) denote the estimate of its action value after it has been selected \(n - 1\) times which can be written as:</p>
+<p>\[Q_n \equiv \frac{R_1 + R_2 + \cdots + R_{n - 1}}{n - 1}\]</p>
+<p>Obvious implementation would be to store all rewards and compute the estimate when needed. Then, the memory and computational requirements would grow linearly as more rewards are seen. That is not necessary because and incremental formula can be devised. Given \(Q_n\) and the \(n\)th reward \(R_n\) the new average is computed by:</p>
+<p>\[ \begin{aligned} Q_{n + 1} &amp;= \frac{1}{n} \sum^n_{i = 1} R_i \\ &amp;= \frac{1}{n} (R_n + \sum^{n - 1}_{i = 1} R_i) \\ &amp;= \frac{1}{n} (R_n + (n - 1) \frac{1}{n - 1} \sum^{n - 1}_{i = 1} R_i) \\ &amp;= \frac{1}{n} (R_n + (n - 1) Q_n) \\ &amp;= \frac{1}{n} (R_n + n Q_n - Q_n) \\ &amp;= Q_n + \frac{1}{n} (R_n - Q_n). \end{aligned} \]</p>
+<p>Code for complete bandit algorithm with incrementally computed sample averages and \(\varepsilon\)-greedy action selection:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co"># estimates of action values</span>
+Q <span class="op">=</span> numpy.zeros(k)
+<span class="co"># numbers of action&#39;s selections</span>
+N <span class="op">=</span> numpy.zeros(k)
+
+<span class="cf">while</span> <span class="va">True</span>:
+    <span class="co"># choose an action</span>
+    <span class="cf">if</span> numpy.random.rand() <span class="op">&lt;</span> <span class="dv">1</span> <span class="op">-</span> epsilon:
+    A <span class="op">=</span> numpy.argmax(Q)
+    <span class="cf">else</span>:
+    A <span class="op">=</span> numpy.random.randint(<span class="dv">0</span>, k)
+    <span class="co"># reward received</span>
+    R <span class="op">=</span> bandit(A)
+    <span class="co"># update the estimated action value</span>
+    N[A] <span class="op">+=</span> <span class="dv">1</span>
+    Q[A] <span class="op">+=</span> (R <span class="op">-</span> Q[A]) <span class="op">/</span> N[A]</code></pre></div>
+<p>where <code>k</code> is number of actions and <code>bandit(a)</code> is function which takes an action and returns a corresponding reward.</p>
+<p>The update rule above occurs frequently and its general form:</p>
+<p>\[\textit{new estimate} \gets \textit{old estimate} + \textit{step size} \cdot (\textit{target} - \textit{old estimate}).\]</p>
+<p>The expression \((\textit{target} - \textit{old estimate})\) is the estimate's <em>error</em> which is reduced by taking a step toward the \(\textit{target}\). Note that the step-size parameter changes over time steps (for \(n\)th reward for action \(a\) the step-size is \(\frac{1}{n}\)). Further the step-size parameter is denoted as \(\alpha\) or \(\alpha_t(a)\).</p>
+<h3 id="tracking-a-non-stationary-problem">Tracking a Non-stationary Problem</h3>
+<p>Methods discussed above are not appropriate for <em>non-stationary</em> problems in which the reward probabilities might change over time. In such cases it makes sense to give more weight to recent rewards. For example with constant step-size parameter:</p>
+<p>\[Q_{n + 1} \equiv Q_n + \alpha (R_n - Q_n),\]</p>
+<p>where \(\alpha (0, 1]\) is the constant step-size parameter. \(Q_{n + 1}\) is then a weighted average of past rewards and the initial estimate \(Q_1\):</p>
+<p>\[ Q_{n + 1} = Q_n + \alpha (R_n - Q_n) = (1 - \alpha)^n Q_1 + \sum_{i = 1}^n \alpha (1 - \alpha)^{n - i} R_i. \]</p>
+<p>Note that \((1 - \alpha)^n + \sum_{i = 1}^n \alpha (1 - \alpha)^{n - i} = 1\) and that the weight \(\alpha (1 - \alpha)^{n - i}\) of reward \(R_i\) depends on how many time steps ago it was observed (\(n - i\)). The weight decays exponentially with respect to exponent \(1 - \alpha\) therefore it is called <em>exponential recency-weighted average</em>.</p>
+<h3 id="optimistic-initial-values">Optimistic Initial Values</h3>
+<p>All methods mentioned above are biased by their initial estimate \(Q_1(a)\). In the case of the sample-average methods the bias disappear after each action is selected but for method with constant \(\alpha\) is permanent though decreasing. It is easy way to supply prior knowledge to the algorithm.</p>
+<p>Initial values might be simple way to encourage exploration. If they are set very optimistic whichever action is selected its reward is less than the starting estimate thus the agent will switch to other actions. This simple technique is called <em>optimistic initial values</em> and is only useful for stationary problems.</p>
+<h3 id="upper-confidence-bound-action-selection">Upper-confidence-bound Action Selection</h3>
+<p>\(\varepsilon\)-greedy action selection forces exploration through non-greedy actions but without preference for those that are nearly greedy or particularly uncertain. <em>Upper confidence bound</em> (UCB) selects according to their potential for being optimal taking into account how close their estimate are to being maximal and estimates uncertainties by equation:</p>
+<p>\[ A_t \equiv \operatorname{argmax}_a \left[Q_t(a) + c \sqrt{\frac{\ln t}{N_t(a)}}\right], \]</p>
+<p>where \(N_t(a)\) denotes the number of times that action \(a\) has been selected prior to time step \(t\) and \(c \gt 0\) controls the degree of exploration. When \(N_t(a) = 0\) then \(a\) is considered to be maximizing action.</p>
+<p>The idea is that the square-root term measures the uncertainty in the estimate of an action's value. It tries to be upper bound for possible true value and \(c\) determines the confidence level.</p>
+<h3 id="contextual-bandits">Contextual Bandits</h3>
+<p>All methods above considered non-associative tasks in which the agent do not associate different actions with different states. The agent only tries to find best action or track the best action as it changes over time. However in a general reinforcement learning task agent's goal it to learn a policy (mapping from situations to its best actions).</p>
+<p><em>Contextual bandits</em> tasks are intermediate between \(k\)-armed bandit and the full reinforcement learning problems. It is an <em>associative search</em> task as it involves both search for best actions and <em>association</em> of theses actions with situation they are best for. They involve learning a policy but each action affects only the immediate reward. If action affect the next state as well as the reward then it is a full reinforcement learning problem.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Richard S. Sutton and Andrew G. Barto, <a href="http://incompleteideas.net/book/the-book-2nd.html" title="Sutton and Barto, Reinforcement Learning: An Introduction">Reinforcement Learning: An Introduction</a></li>
+<li>David Silver, <a href="http://www0.cs.ucl.ac.uk/staff/d.silver/web/Teaching.html">UCL Course on Reinforcement Learning</a></li>
+<li>John Schulman, <a href="https://www.youtube.com/watch?v=aUrX-rP_ss4">Deep Reinforcement Learning</a></li>
+<li>Denny Britz, <a href="http://www.wildml.com/2016/10/learning-reinforcement-learning/">Learning Reinforcement Learning</a></li>
+</ul>
+<script>
+renderMathInElement(document.body);
+</script>
+</body>
+</html>

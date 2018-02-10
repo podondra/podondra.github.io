@@ -1,65 +1,65 @@
-How to Interactively Plot Big Data
-==================================
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>How to Interactively Plot Big Data</title>
+</head>
+<body>
 
-:date: 2017-01-21
-:modified: 2017-04-19
-:tags: jupyter, matplotlib, ipympl, python, vizualization
+# How to Interactively Plot Big Data
+
+Published on 21st January 2017.
 
 In this article I'm about to show how to plot interactively Big Data in
 Jupyter using Matplotlib. Data visualization is essential to data
 science. Interactivity helps to get rid of outliers or to focus on
 specific parts of data.
 
-Nbagg
------
+## Nbagg
 
 Interactive matplotlib figures are available in Jupyter (IPython)
-notebook from version 1.4
-(https://pelson.github.io/2014/nbagg\_backend/). There is an
-interactive backend called
-`nbagg <http://matplotlib.org/1.4.3/users/whats_new.html#the-nbagg-backend>`__.
+notebook from [version 1.4](https://pelson.github.io/2014/nbagg_backend/).
+There is an interactive backend called
+[nbagg](http://matplotlib.org/1.4.3/users/whats_new.html#the-nbagg-backend>).
 Just call this magic command and import matplotlib in your notebook:
 
-.. code-block:: python3
+```python
+%matplotlib nbagg
+import matplotlib.pyplot as plt
+```
 
-    %matplotlib nbagg
-    import matplotlib.pyplot as plt
+## Ipympl
 
-Ipympl
-------
-
-Jupyter plugin `ipympl <https://github.com/matplotlib/jupyter-matplotlib>`__
+Jupyter plugin [ipympl](https://github.com/matplotlib/jupyter-matplotlib>)
 has been created to "*... separate developement of the Jupyter integration
 (future versions of notebook and Jupyter Lab) from the calendar of the
-releases of the main matplotlib repository.*\ ". This plugin requires
+releases of the main matplotlib repository.*". This plugin requires
 matplotlib v2.0.0. But it seem inactive nowadays.
 
-Installation
-~~~~~~~~~~~~
+## Installation
 
 I recommend to create an virtual environment.
 
-.. code-block:: bash
-
-    $ virtualenv -p python3 venv
-    $ source venv/bin/activate
+```bash
+$ virtualenv -p python3 venv
+$ source venv/bin/activate
+```
 
 Then install the ipympl plugin and enable it (it will automatically
 install jupyter, matplotlib and itself).
 
-.. code-block:: bash
-
-    $ pip install ipympl
-    $ jupyter nbextension enable --py --sys-prefix ipympl
+```bash
+$ pip install ipympl
+$ jupyter nbextension enable --py --sys-prefix ipympl
+```
 
 Sometimes it is also required to enable Javascript widget.
 
-.. code-block:: bash
+```bash
+$ jupyter nbextension enable --py --sys-prefix widgetsnbextension
+```
 
-    $ jupyter nbextension enable --py --sys-prefix widgetsnbextension
-
-Plotting
---------
+## Plotting
 
 In interactive mode matplotlib will plot a graph with this set of buttons.
 
@@ -79,27 +79,24 @@ When the view is ready 'download plot' button will download the image or
 
 Here is a short example with 80 MB.
 
-.. code-block:: python3
+```python
+%matplotlib nbagg
+import matplotlib.pyplot as plt
+import numpy as np
 
-    %matplotlib nbagg
-    import matplotlib.pyplot as plt
-    import numpy as np
-    
-    size = 10 ** 7
-    data = np.random.normal(size=size)
-    print('size of array is {} MB'.format(data.nbytes / 10 ** 6))
-    plt.scatter(np.arange(size), data, s=1)
-    plt.show()
+size = 10 ** 7
+data = np.random.normal(size=size)
+print('size of array is {} MB'.format(data.nbytes / 10 ** 6))
+plt.scatter(np.arange(size), data, s=1)
+plt.show()
+```
 
+![Matplotlib interactive plot.](images/interactive-plotting-0.png)
 
-.. image:: {filename}/images/interactive-plotting-0.png
-    :alt: matplotlib interactive plot
-
-Pros
-~~~~
+## Pros
 
 Jupyter is client-server application. The communication is done over
-`WebSocket <https://en.wikipedia.org/wiki/WebSocket>`__. This is great
+[WebSocket](https://en.wikipedia.org/wiki/WebSocket). This is great
 in case of Big Data plotting because all the rendering is done server
 side and the only thing left for a client browser is to display the
 image. So there is no worry about computational power of a notebook or a
@@ -109,8 +106,7 @@ Here is a WebSocket frame dumped by Chromium Developer Tools (with some
 parts strip off). The important part is the base64 encoded image (which
 is also shorted).
 
-.. code-block:: python3
-
+```
     {'buffers': [],
      'channel': 'iopub',
      'content': {'comm_id': '...',
@@ -131,10 +127,13 @@ is also shorted).
                        'session': '...',
                        'username': 'username',
                        'version': '5.0'}}
+```
 
-Conclusion
-----------
+## Conclusion
 
 That's it. This approach makes it kind of easy. Matplotlib and Python are
 widely used and visualizing data is essential as I inferred from many
 talks about data science. Interactivity just moves this one step further.
+
+</body>
+</html>
