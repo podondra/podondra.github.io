@@ -1,4 +1,4 @@
-# Off-policy Policy Evaluation
+# Off-policy Policy Evaluation Slides
 
 Published on 16th March 2018.
 
