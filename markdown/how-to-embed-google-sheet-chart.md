@@ -1,11 +1,3 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>How to Embed Google Sheet Chart</title>
-</head>
-<body>
-
 # How to Embed Google Sheet Chart
 
 Published on 19th March 2017.
@@ -42,6 +34,3 @@ when changes are made.
 But be patient with size of the chart.
 Try to keep the sizes the same.
 Finally, the chart yout get is nice and the data are store in simple sheet.
-
-</body>
-</html>

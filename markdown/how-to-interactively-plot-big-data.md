@@ -1,11 +1,3 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>How to Interactively Plot Big Data</title>
-</head>
-<body>
-
 # How to Interactively Plot Big Data
 
 Published on 21st January 2017.
@@ -134,6 +126,3 @@ is also shorted).
 That's it. This approach makes it kind of easy. Matplotlib and Python are
 widely used and visualizing data is essential as I inferred from many
 talks about data science. Interactivity just moves this one step further.
-
-</body>
-</html>

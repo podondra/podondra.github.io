@@ -1,11 +1,3 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Deep Learning in Large Astronomical Spectra Archives</title>
-</head>
-<body>
-
 # Deep Learning in Large Astronomical Spectra Archives
 
 Published on 27th June 2017.
@@ -65,6 +57,3 @@ To cite this work please use this BibTeX entry.
 	doi = {10.5281/zenodo.818247},
 }
 ```
-
-</body>
-</html>

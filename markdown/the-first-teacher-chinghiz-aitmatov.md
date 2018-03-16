@@ -1,11 +1,3 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>The First Teacher, Chinghiz Aitmatov</title>
-</head>
-<body>
-
 # The First Teacher, Chinghiz Aitmatov
 
 Published on 19th March 2017.
@@ -35,6 +27,3 @@ and he will do anythin for the party.
 I think this book shows how communism from point of individual
 can bring a lot of positive (gives power to a man to educate a village).
 But from the collective perspective it fails.
-
-</body>
-</html>
