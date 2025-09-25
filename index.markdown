@@ -4,3 +4,4 @@
 
 layout: home
 ---
+I do artificial intelligence, machine learning, data science and philosophy.
